@@ -20,7 +20,7 @@ function registerphone_config()
         'language' => 'english',
         // Version number
         'version' => '1.0',
-       
+
     ];
 }
 
