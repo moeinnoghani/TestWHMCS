@@ -1,5 +1,9 @@
 <?php
 
+if (!defined("WHMCS")) {
+    exit("This file cannot be accessed directly");
+}
+
 function camp_registrar_MetaData()
 {
     return array(
@@ -11,49 +15,63 @@ function camp_registrar_MetaData()
 
 function camp_registrar_getConfigArray($params)
 {
-    return array(
-        "username" => array(
-            "FriendlyName" => "UserName",
-            "Type" => "text", # Text Box
-            "Size" => "25", # Defines the Field Width
-            "Description" => "Textbox",
-            "Default" => "Example",
-        ),
-        "password" => array(
-            "FriendlyName" => "Password",
-            "Type" => "password", # Password Field
-            "Size" => "25", # Defines the Field Width
-            "Description" => "Password",
-            "Default" => "Example",
-        ),
-        "usessl" => array(
-            "FriendlyName" => "Enable SSL",
-            "Type" => "yesno", # Yes/No Checkbox
-            "Description" => "Tick to use secure connections",
-        ),
-        "package" => array(
-            "FriendlyName" => "Package Name",
-            "Type" => "dropdown", # Dropdown Choice of Options
-            "Options" => "Starter,Advanced,Ultimate",
-            "Description" => "Sample Dropdown",
-            "Default" => "Advanced",
-        ),
-        "disk" => array(
-            "FriendlyName" => "Disk Space",
-            "Type" => "radio", # Radio Selection of Options
-            "Options" => "100MB,200MB,300MB",
-            "Description" => "Radio Options Demo",
-            "Default" => "200MB",
-        ),
-        "comments" => array(
-            "FriendlyName" => "Notes",
-            "Type" => "textarea", # Textarea
-            "Rows" => "3", # Number of Rows
-            "Cols" => "50", # Number of Columns
-            "Description" => "Description goes here",
-            "Default" => "Enter notes here",
-        ),
-    );
+////    var_dump($params);
+////    die();
+//    return array(
+//        "username" => array(
+//            "FriendlyName" => "UserName",
+//            "Type" => "text", # Text Box
+//            "Size" => "25", # Defines the Field Width
+//            "Description" => "Textbox",
+//            "Default" => "Example",
+//        ),
+//        "password" => array(
+//            "FriendlyName" => "Password",
+//            "Type" => "password", # Password Field
+//            "Size" => "25", # Defines the Field Width
+//            "Description" => "Password",
+//            "Default" => "Example",
+//        ),
+//        "usessl" => array(
+//            "FriendlyName" => "Enable SSL",
+//            "Type" => "yesno", # Yes/No Checkbox
+//            "Description" => "Tick to use secure connections",
+//        ),
+//        "package" => array(
+//            "FriendlyName" => "Package Name",
+//            "Type" => "dropdown", # Dropdown Choice of Options
+//            "Options" => "Starter,Advanced,Ultimate",
+//            "Description" => "Sample Dropdown",
+//            "Default" => "Advanced",
+//        ),
+//        "disk" => array(
+//            "FriendlyName" => "Disk Space",
+//            "Type" => "radio", # Radio Selection of Options
+//            "Options" => "100MB,200MB,300MB",
+//            "Description" => "Radio Options Demo",
+//            "Default" => "200MB",
+//        ),
+//        "comments" => array(
+//            "FriendlyName" => "Notes",
+//            "Type" => "textarea", # Textarea
+//            "Rows" => "3", # Number of Rows
+//            "Cols" => "50", # Number of Columns
+//            "Description" => "Description goes here",
+//            "Default" => "Enter notes here",
+//        ),
+//    );
+//
+    return [
+        'base_url' => [
+            "FriendlyName" => "Base URL",
+            "Type" => "text",
+        ],
+
+        'token' => [
+            "FriendlyName" => "Token",
+            "Type" => "text",
+        ]
+    ];
 }
 
 function camp_registrar_RenewDomain($params)
@@ -108,6 +126,7 @@ function camp_registrar_RenewDomain($params)
 
 function camp_registrar_RegisterDomain($vars)
 {
-    print json_encode($vars);
-    die;
+//    print json_encode($vars);
+//    die;
+//    $domain = $vars[];
 }
