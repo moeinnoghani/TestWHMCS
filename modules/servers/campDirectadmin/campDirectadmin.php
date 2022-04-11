@@ -12,15 +12,19 @@ function campDirectadmin_ConfigOptions($vars)
 
     $moduleconfig = getModuelconfig($_POST['id']);
     $packages = [];
-    file_put_contents(__DIR__ . '/logs.txt', $packages);
+
     if ($moduleconfig->configoption1 !== '') {
         $params = getLoginParams($_POST['id']);
         $packageList = moduele_directadmin_req('CMD_API_PACKAGES_USER', [], $params);
+
+        file_put_contents(__DIR__ . '/logs.txt', $packageList);
         $packages = collect($packageList['list'])->mapWithKeys(function ($item) {
             return [
                 $item => $item
             ];
         });
+        var_dump($packages);
+        die();
 
         file_put_contents(__DIR__ . '/logs.txt', $packages);
 

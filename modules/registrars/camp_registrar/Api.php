@@ -20,7 +20,7 @@ class Api
     {
         try {
 
-            $respone = $this->client()
+//            $respone = $this->client()
 
         } catch (Exception $e) {
 
