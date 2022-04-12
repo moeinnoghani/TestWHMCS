@@ -12,6 +12,9 @@ class ClientHistory extends mainController
 {
     private $clientEmail;
     private $clientId;
+    private $verifiedUser;
+
+    const EXPIRED_AFTER = 3;
 
     public function __construct()
     {
@@ -21,35 +24,28 @@ class ClientHistory extends mainController
     public function showPassedDays()
     {
 
-        if ($_POST['validationcode']) {
+        if ($_POST['validationCode'] && $_POST['email']) {
+
             $this->clientEmail = $_POST['email'];
-            $this->checkValidationCode($_POST['validationcode']);
+
+            echo $this->checkValidationCode($_POST['validationCode']);
+            die();
+
         }
 
-        if ($this->clientEmailValidation($_POST['email'])) {
-            $validationCode = rand(1000, 9999);
-
-            try {
-                $insert_data = [
-                    'email' => $this->clientEmail,
-                    'code' => $validationCode,
-                    'verified_at' => \Carbon\Carbon::now(),
-                    "created_at" => \Carbon\Carbon::now(),
-                    "updated_at" => \Carbon\Carbon::now(),
-                ];
-                Capsule::table('verifycode')
-                    ->insert($insert_data);
-
-            } catch (\Illuminate\Database\QueryException $ex) {
-                echo $ex->getMessage();
-            } catch (Exception $e) {
-                echo $e->getMessage();
-            }
-
-            $api = new EmailApi($this->clientEmail, $validationCode, $this->clientId
-            );
-            $api->send();
-        }
+//        if ($this->clientEmailValidation($_POST['email'])) {
+//
+//            //            $validationCode_rules = [
+////                'digits' => '4',
+//////                'min' => '',
+//////                'max' => ''
+////            ];
+//
+//            $validationCode = $this->genrateValidationCode();
+//
+//            $api = new EmailApi($this->clientEmail, $validationCode, $this->clientId);
+//            $api->send();
+//        }
 
 
     }
@@ -63,13 +59,11 @@ class ClientHistory extends mainController
             ]);
             die();
         } else {
-
             $user = Capsule::table('tblclients')->where('email', $email)->first();
 
             if ($user) {
                 $this->clientEmail = $_POST['email'];
                 $userId = Capsule::table('tblclients')->where('email', $this->clientEmail)->first('id');
-//                $this->clientId = implode('', json_decode(json_encode($userId), true));
                 $this->clientId = $userId->id;
                 return 1;
             } else {
@@ -85,17 +79,66 @@ class ClientHistory extends mainController
 
     private function checkValidationCode($validationCode)
     {
-        $user = Capsule::table('verifycode')
+        if ($this->clientEmailValidation($this->clientEmail)) {
+
+            $validationObj = Capsule::table('verifycode')
+                ->where('code', $validationCode)
+                ->where('email',$this->clientEmail)
+                ->first();
+
+            if (is_null($validationObj)) {
+                echo 'your code is invalid';
+                die;
+            }
+
+            $expired_at = \Carbon\Carbon::parse($validationObj->expired_at);
+            $now = \Carbon\Carbon::now();
+
+            if ($expired_at->gt($now)) {
+                return true;
+            } else {
+                echo 'your validation code is expired';
+                die;
+            }
+        }
+    }
+
+    private function genrateValidationCode($rules = null)
+    {
+        $validationCode = rand(1000, 9999);
+
+        try {
+            $insert_data = [
+                'email' => $this->clientEmail,
+                'code' => $validationCode,
+                'verified_at' => \Carbon\Carbon::now(),
+                "created_at" => \Carbon\Carbon::now(),
+                "updated_at" => \Carbon\Carbon::now(),
+            ];
+
+            Capsule::table('verifycode')
+                ->insert($insert_data);
+
+        } catch (\Illuminate\Database\QueryException $ex) {
+            echo $ex->getMessage();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+        return $validationCode;
+    }
+
+    private function getClientHistoryInDays()
+    {
+        $user = Capsule::table('tblclients')
             ->where('email', $this->clientEmail)
             ->first();
 
         $startTime = new \Carbon\Carbon($user->created_at);
-        echo $startTime;
-        die();
         $nowTime = \Carbon\Carbon::now();
-        var_dump( $nowTime->diffInHours($startTime));
+        $timeDifference = $nowTime->diffInDays($startTime);
 
-        die();
+        return $timeDifference;
     }
 
 
