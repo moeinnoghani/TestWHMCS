@@ -22,9 +22,8 @@ class ClientHistory extends mainController
     {
 
         if ($_POST['validationcode']) {
-            $user_created_at = Capsule::table('verifycode')
-                ->where('email', $this->clientEmail)
-                ->first('created_at');
+            $this->clientEmail = $_POST['email'];
+            $this->checkValidationCode($_POST['validationcode']);
         }
 
         if ($this->clientEmailValidation($_POST['email'])) {
@@ -70,7 +69,8 @@ class ClientHistory extends mainController
             if ($user) {
                 $this->clientEmail = $_POST['email'];
                 $userId = Capsule::table('tblclients')->where('email', $this->clientEmail)->first('id');
-                $this->clientId = implode('', json_decode(json_encode($userId), true));
+//                $this->clientId = implode('', json_decode(json_encode($userId), true));
+                $this->clientId = $userId->id;
                 return 1;
             } else {
                 echo json_encode([
@@ -85,7 +85,17 @@ class ClientHistory extends mainController
 
     private function checkValidationCode($validationCode)
     {
+        $user = Capsule::table('verifycode')
+            ->where('email', $this->clientEmail)
+            ->first();
 
+        $startTime = new \Carbon\Carbon($user->created_at);
+        echo $startTime;
+        die();
+        $nowTime = \Carbon\Carbon::now();
+        var_dump( $nowTime->diffInHours($startTime));
+
+        die();
     }
 
 
