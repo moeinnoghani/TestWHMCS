@@ -31,7 +31,7 @@ add_hook('ClientAreaPage', 1, function ($vars) {
         && $_SERVER['REQUEST_URI'] != '/whmcs-8/index.php?rp=/login') {
         if (!$results['customfields1'] == 'on') {
             file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . 'file.json', json_encode($results));
-            header('Location: http://localhost/whmcs-8/index.php?m=phone_verify');
+            header('Location: http://localhost:8080/whmcs-8/index.php?m=registerphone');
             exit();
 
         }
