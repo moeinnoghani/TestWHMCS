@@ -6,18 +6,20 @@ class EmailApi
     private $emailAddress;
     private $validationCode;
     private $clientId;
+    private $emailTemplate;
 
-    public function __construct($emailAddress, $validationCode, $clientId)
+    public function __construct($emailAddress, $validationCode, $clientId,$emailTemplate)
     {
         $this->validationCode = $validationCode;
         $this->emailAddress = $emailAddress;
         $this->clientId = $clientId;
+        $this->emailTemplate = $emailTemplate;
     }
 
     public function send()
     {
         $postParams = [
-            'messagename' => 'iranserver campaign email',
+            'messagename' => $this->emailTemplate,
             'id' => $this->clientId,
             'customsubject' => 'test subject',
             'custommessage' => '.',

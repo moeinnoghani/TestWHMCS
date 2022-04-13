@@ -11,15 +11,33 @@ class IranserverCampaign1401
 
     private $clientEmail;
     private $cliendId;
+    private ClientHistory $clientHistory;
+
+
+    public function __construct()
+    {
+        $this->clientEmail = $_REQUEST['email'];
+        $this->clientHistory = new ClientHistory();
+    }
 
     public function getClientHistory()
     {
+        $this->checkValidationCode($_REQUEST['validationCode']);
+
+        $clientHistoryInDays = $this->clientHistory->getClientHistoryInDays($this->clientEmail);
+
+        echo json_encode([
+            'response' => [
+                'age' =>  $clientHistoryInDays
+            ]
+        ]);
+        die();
 
     }
 
     public function getOfferCode()
     {
-
+//To Generate Offer Code for Iranserver Clients
     }
 
     public function register()
@@ -27,7 +45,8 @@ class IranserverCampaign1401
         if ($this->clientEmailValidation($_POST['email'])) {
             $validationCode = $this->genrateValidationCode();
 
-            $api = new EmailApi($this->clientEmail, $validationCode, $this->clientId);
+            $api = new EmailApi($this->clientEmail, $validationCode,
+                $this->clientId,ModuleConfiguration::getModuleConfig());
             $api->send();
         }
 
@@ -52,8 +71,11 @@ class IranserverCampaign1401
                 return 1;
             } else {
                 echo json_encode([
-                    'status' => 'failed',
-                    'message' => "you're not a Iranserver client"
+                    'errors' => [
+                        'status' => '',
+                        'title' => 'Email Not Found',
+                        'detail' => "you're not a Iranserver client"
+                    ]
                 ]);
                 die();
             }
@@ -84,6 +106,44 @@ class IranserverCampaign1401
         }
 
         return $validationCode;
+    }
+
+    private function checkValidationCode($validationCode)
+    {
+        if ($this->clientEmailValidation($this->clientEmail)) {
+
+            $validationObj = Capsule::table('verifycode')
+                ->where('code', $validationCode)
+                ->where('email', $this->clientEmail)
+                ->first();
+
+            if (is_null($validationObj)) {
+                echo json_encode([
+                    'error' => [
+                        'status' => '',
+                        'title' => 'validation error',
+                        'detail' => 'your validation code is invalid'
+                    ]
+                ]);
+                die;
+            }
+
+            $expired_at = \Carbon\Carbon::parse($validationObj->expired_at);
+            $now = \Carbon\Carbon::now();
+
+            if ($expired_at->gt($now)) {
+                return true;
+            } else {
+                echo json_encode([
+                    'error' => [
+                        'status' => '',
+                        'title' => 'validation error',
+                        'detail' => 'your validation code is expired'
+                    ]
+                ]);
+                die;
+            }
+        }
     }
 
 }

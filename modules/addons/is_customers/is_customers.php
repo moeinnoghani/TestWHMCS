@@ -12,15 +12,28 @@ date_default_timezone_set("Asia/Tehran");
 
 function is_customers_config()
 {
+
+
+    $postParams = array('type' => 'general');
+    $generalTemplates = localAPI('GetEmailTemplates', $postParams);
+    $generalTemplatesName = collect($generalTemplates['emailtemplates']['emailtemplate'])->map(
+        function ($template) {
+            return $template['name'];
+        });
+
     $configarray = array(
         "name" => "مشتریان",
         "description" => "<span style='margin-top: 5px;font-size: 10px;color: green;display: inline-block;border-top: 1px solid;border-bottom: 1px solid;line-height: 25px;padding: 0 10px;'>ماژولی برای تفکیک اطلاعات مشتریان بر اساس محصولات خریداری شده</span>",
         "version" => "1.1",
         "author" => "Majid Farzaneh (iran server)",
-//        "fields" => array(
-//            "option1" => array ("FriendlyName" => "عنوان ماژول", "Type" => "text", "Size" => "255",
-//                "Default" => "مشتریان", ),
-//        )
+        "fields" => array(
+            'emailtemplate' => [
+                'FriendlyName' => 'Email Templates',
+                'Type' => 'dropdown',
+                'Options' => implode(",", $generalTemplatesName->toArray()),
+                'Description' => 'Choose one templates',
+            ],
+        )
     );
     return $configarray;
 }
@@ -30,11 +43,10 @@ function is_customers_activate()
 
 }
 
-function is_customers_output($var)
+function is_customers_output($vars)
 {
-
     define('BASE_URL', '/modules/addons/is_customers/');
-    define('MODULE_URL', $var['modulelink']);
+    define('MODULE_URL', $vars['modulelink']);
 
     $action = (isset($_GET['action'])) ? $_GET['action'] : 'main/index';
 
@@ -55,6 +67,9 @@ function is_customers_output($var)
 
 function is_customers_clientarea($vars)
 {
+    ModuleConfiguration::setModuleConfig([
+            'emailTemplateName' => $vars['emailtemplate']]
+    );
 
     $action = (isset($_GET['action'])) ? $_GET['action'] : 'main/index';
 
@@ -70,7 +85,7 @@ function is_customers_clientarea($vars)
     require_once __DIR__ . "/controller/" . $controller . '.php';
     $class = new $controller();
     return $class->$method();
-    die;
+
 }
 
 function is_customers_upgrade($vars)
