@@ -18,6 +18,8 @@
 //});
 
 add_hook('ClientAreaPage', 1, function ($vars) {
+
+
     $postData = [
         'clientid' => $vars['client']['id'],
         'stats' => true,

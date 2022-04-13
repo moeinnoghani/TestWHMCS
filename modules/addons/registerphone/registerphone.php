@@ -161,27 +161,29 @@ function registerphone_deactivate()
 //    );
 //}
 //
-//function registerphone_output($vars)
-//{
-//
-//    include __DIR__ . './adminOutput.tpl';
-//    $modulelink = $vars['modulelink'];
-//    $version = $vars['version'];
-//
-//}
-//
-//function activeVerify()
-//{
-//    if ($_POST['activeVerify']) {
-//        Capsule::table('security_table')->update([
-//            'is_active' => 'true'
-//        ]);
-//        return true;
-//    }
-//    if ($_POST['diactiveVerify']) {
-//        Capsule::table('security_table')->update([
-//            'is_active' => 'true'
-//        ]);
-//        return false;
-//    }
-//}
+function registerphone_output($vars)
+{
+    print json_encode($vars);
+    die();
+
+    include __DIR__ . './adminOutput.tpl';
+    $modulelink = $vars['modulelink'];
+    $version = $vars['version'];
+
+}
+
+function activeVerify()
+{
+    if ($_POST['activeVerify']) {
+        Capsule::table('security_table')->update([
+            'is_active' => 'true'
+        ]);
+        return true;
+    }
+    if ($_POST['diactiveVerify']) {
+        Capsule::table('security_table')->update([
+            'is_active' => 'true'
+        ]);
+        return false;
+    }
+}
