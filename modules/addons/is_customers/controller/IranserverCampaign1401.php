@@ -47,9 +47,8 @@ class IranserverCampaign1401
 
             $api = new EmailApi($this->clientEmail, $validationCode,
                 $this->clientId,ModuleConfiguration::getModuleConfig());
-            $api->send();
+            $respone = $api->send();
         }
-
 
     }
 

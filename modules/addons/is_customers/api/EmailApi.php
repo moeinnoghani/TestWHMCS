@@ -8,7 +8,7 @@ class EmailApi
     private $clientId;
     private $emailTemplate;
 
-    public function __construct($emailAddress, $validationCode, $clientId,$emailTemplate)
+    public function __construct($emailAddress, $validationCode, $clientId, $emailTemplate)
     {
         $this->validationCode = $validationCode;
         $this->emailAddress = $emailAddress;
@@ -28,8 +28,7 @@ class EmailApi
         ];
 
         $results = localAPI('SendEmail', $postParams);
-        print json_encode($results);
-        die();
+        return $results;
 
     }
 }
