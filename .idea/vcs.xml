@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/modules/addons/is_customers" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/modules/addons/reminder" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/modules/registrars/camp_registrar/guzzle" vcs="Git" />
   </component>
 </project>

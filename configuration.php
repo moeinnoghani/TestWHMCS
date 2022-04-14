@@ -8,3 +8,4 @@ $db_name = 'whmcs';
 $cc_encryption_hash = 'chsRAqTBuMhiBcyiXv1ZauaGlewCXqqXnYHwFWMF5x8gusAjWM5B2doyvRj3W4IS';
 $templates_compiledir = 'templates_c';
 $mysql_charset = 'utf8';
+$display_errors = 1;

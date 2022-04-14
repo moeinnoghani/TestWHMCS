@@ -16,7 +16,7 @@
 //        echo 'phone.no is not valid';
 //    }
 //});
-
+//
 add_hook('ClientAreaPage', 1, function ($vars) {
 
 
@@ -40,5 +40,4 @@ add_hook('ClientAreaPage', 1, function ($vars) {
     file_put_contents(__DIR__ . '/text.json', json_encode($vars['client']['id']), FILE_APPEND);
 
 });
-
 

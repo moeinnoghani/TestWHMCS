@@ -12,11 +12,11 @@ class Client
         $this->clientId = $clientId;
     }
 
-    public function getClientById()
+    public function getId()
     {
         return Capsule::table($this->table_name)
             ->where('id', $this->clientId)
-            ->first();
+            ->first()->id;
     }
 
     public function getClientPasswordExpiration()
