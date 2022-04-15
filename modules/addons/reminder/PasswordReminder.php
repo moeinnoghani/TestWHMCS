@@ -23,6 +23,18 @@ class PasswordReminder
 
     }
 
+    public function isPasswordExpired()
+    {
+        $passwordExpirationTime = $this->getPasswordExpirationTime();
+
+        if ($passwordExpirationTime->lt(\Carbon\Carbon::now())) {
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
     public function getPasswordExpirationTime()
     {
         $password_resetted_at = Capsule::table('passwordreset')

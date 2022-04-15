@@ -15,9 +15,12 @@ add_hook('ClientAreaPage', 1, function ($vars) {
     ReminderConfiguration::setPasswordExpirationTime($passwordExpiration_InDay);
 
     $passwordReminder = new PasswordReminder($vars['clientsdetails']);
-    var_dump($passwordReminder->getPasswordExpirationTime());
-    die();
 
+});
+
+add_hook('UserChangePassword', 1, function($vars) {
+   var_dump($vars);
+   die;
 });
 
 
