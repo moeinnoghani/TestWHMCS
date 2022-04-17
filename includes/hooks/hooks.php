@@ -41,5 +41,10 @@ add_hook('ClientAreaPage', 1, function ($vars) {
 
 });
 
+add_hook('AddonConfigSave', 1, function($vars) {
+    var_dump($vars);
+    die();
+});
+
 
 

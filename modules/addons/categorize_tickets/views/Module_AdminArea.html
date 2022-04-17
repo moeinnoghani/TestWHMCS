@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div class="panel panel-default" style="width: fit-content;background: #63cfd2">
+    <div class="panel-body" style="color: #9a141e;font-size:large">
+        Available Ticket Tags
+    </div>
+    <div class="panel-footer" style="font-size: large">
+        <ul>
+            <?php
+$tags->each(function ($var){
+            echo "
+            <li>$var->tag</li>
+            ";
+
+            });
+            ?>
+        </ul>
+    </div>
+</div>
+
+<form class="navbar-form navbar-left" role="search" method="get" action="../modules/addons/categorize_tickets/test.php">
+
+    <div class="form-group">
+        <input name="newtag" type="text" class="form-control" placeholder="Enter New Ticket Tag">
+    </div>
+    <button type="submit" class="btn btn-default">Add</button>
+</form>
+
+</body>
+</html>
