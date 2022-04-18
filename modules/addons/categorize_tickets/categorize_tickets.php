@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
+include __DIR__ . DIRECTORY_SEPARATOR . "CategorizeTicket.php";
+
+
 function categorize_tickets_config()
 {
     return [
@@ -51,12 +54,34 @@ function categorize_tickets_upgrade($vars)
 
                 }
             );
+
+        Capsule::schema()
+            ->create(
+                'ticketstags',
+                function ($table) {
+                    /** @var \Illuminate\Database\Schema\Blueprint $table */
+                    $table->increments('id');
+                    $table->text('ticket_id');
+                    $table->text('tag');
+
+                }
+            );
     }
 }
 
 function categorize_tickets_output($vars)
 {
-    $tags = Capsule::table('tbltags')->where('type', 'ticket')->get();
+    $categorizeTicket = new CategorizeTicket();
+    $temp = $categorizeTicket->getTicketsDetails();
+
+    var_dump($temp);
+    die();
+
+    if (isset($_POST['newtag'])) {
+        $categorizeTicket->addNewTag($_POST['newtag']);
+    }
+
+    $tags = $categorizeTicket->getTicketTags();
 
     return include __DIR__ . DIRECTORY_SEPARATOR . "views/Module_AdminArea.html";
 }

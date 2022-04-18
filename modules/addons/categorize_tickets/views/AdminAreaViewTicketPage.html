@@ -17,7 +17,7 @@
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
         <?php
 $tags->each(function ($var){
-        echo "<li><a>$var->tag</a></li>";
+        echo "<li class="lists"><a>$var->tag</a></li>";
         });
         ?>
     </ul>
@@ -25,3 +25,18 @@ $tags->each(function ($var){
 </div>
 </body>
 </html>
+
+<script>
+    $('.lists').click(function (event) {
+        event.preventDefault()
+        $.ajax({
+            url: "addonmodules.php?module=categorize_tickets",
+            cache: false,
+            type: "POST",
+            data: {
+                selectedTag: $("#newtag").val(),
+
+            }
+        });
+    })
+</script>
