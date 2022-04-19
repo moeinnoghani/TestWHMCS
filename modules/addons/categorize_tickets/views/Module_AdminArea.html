@@ -36,8 +36,56 @@ $tags->each(function ($var){
     </div>
     <button id="selectBtn" type="submit" name="selectBtn" class="btn btn-default">Add</button>
 </form>
+<br>><br
+><br>
+
+<select  class="btn btn-default dropdown-toggle" name="options" id="inlineFormCustomSelect" >
+    <option class=none selected disabled>Choose Ticket Tag</option>
+    <?php
+     $tags->each(function ($var){
+    echo "<option class=none value='{$var->tag}'> $var->tag </option>";
+    });
+    ?>
+
+</select>
+
+<table id="myTable" class="table">
+    <thead class="table">
+    <tr>
+        <th>Ticket Id</th>
+        <th>Tag</th>
+        <th>Subject</th>
+        <!--        <th>Message</th>-->
+        <th>Status</th>
+        <th>Owner Name</th>
+        <th>Owner Email</th>
+        <th>Department</th>
+        <th>Created At</th>
+    </tr>
+    </thead>
+    <?php
+
+
+    $tickets->each(function ($var){
+    echo "
+    <tr>
+        <td> $var->ticket_id</td>
+        <td> $var->tag</td>
+        <td> $var->title</td>
+        <td> $var->status</td>
+        <td> $var->firstname $var->lastname</td>
+        <td>$var->email</td>
+        <td> $var->name</td>
+        <td> $var->date</td>
+    </tr>
+    ";
+    });
+    ?>
+
+</table>
 
 </body>
+
 
 </html>
 

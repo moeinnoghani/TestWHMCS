@@ -26,15 +26,35 @@ class CategorizeTicket
         return $tags;
     }
 
+
+    public function setTagToTicket($ticketId, $tagName)
+    {
+        if (Capsule::table('ticketstags')->where('ticket_id', $ticketId)->exists()) {
+
+            Capsule::table('ticketstags')
+                ->where('ticket_id', $ticketId)
+                ->update([
+                    'tag' => $tagName
+                ]);
+        } else {
+            Capsule::table('ticketstags')->insert([
+                'ticket_id' => $ticketId,
+                'tag' => $tagName
+            ]);
+
+        }
+    }
+
     public function getTicketsDetails()
     {
-        $temp = Capsule::table('tbltickets')
-            ->join('tbltags', 'tbltickets.id', '=', 'ticketstags.ticket_id')
+
+        return Capsule::table('ticketstags')
+            ->join('tbltickets', 'tbltickets.id', '=', 'ticketstags.ticket_id')
             ->join('tblclients', 'tbltickets.userid', '=', 'tblclients.id')
-            ->select('ticketstags.', 'tbltickets.', 'tblclients.*')->get();
-
-
-        return $temp;
+            ->join('tblticketdepartments', 'tbltickets.did', '=', 'tblticketdepartments.id')
+            ->select('*','tbltickets.status')
+            ->get();
     }
+
 
 }

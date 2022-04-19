@@ -72,10 +72,11 @@ function categorize_tickets_upgrade($vars)
 function categorize_tickets_output($vars)
 {
     $categorizeTicket = new CategorizeTicket();
-    $temp = $categorizeTicket->getTicketsDetails();
+    $tickets = $categorizeTicket->getTicketsDetails();
 
-    var_dump($temp);
-    die();
+    if (isset($_POST['selectedTag']) && isset($_POST['ticketId'])) {
+        $categorizeTicket->setTagToTicket($_POST['ticketId'], $_POST['selectedTag']);
+    }
 
     if (isset($_POST['newtag'])) {
         $categorizeTicket->addNewTag($_POST['newtag']);
@@ -83,5 +84,5 @@ function categorize_tickets_output($vars)
 
     $tags = $categorizeTicket->getTicketTags();
 
-    return include __DIR__ . DIRECTORY_SEPARATOR . "views/Module_AdminArea.html";
+    return include __DIR__ . DIRECTORY_SEPARATOR . 'views/Module_AdminArea.html';
 }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2022-04-19 13:52:46
+/* Smarty version 3.1.36, created on 2022-04-19 13:54:41
   from 'mailMessage:message' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_625ea28ed62f37_98140165',
+  'unifunc' => 'content_625ea3013a9343_89436087',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '652e3de8ff57f412acf7c0a8dadc70dc1a7637b6' => 
     array (
       0 => 'mailMessage:message',
-      1 => 1650369166,
+      1 => 1650369281,
       2 => 'mailMessage',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_625ea28ed62f37_98140165 (Smarty_Internal_Template $_smarty_tpl) {
+function content_625ea3013a9343_89436087 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -64,27 +64,20 @@ function content_625ea28ed62f37_98140165 (Smarty_Internal_Template $_smarty_tpl)
                                         <tr>
                                             <td valign="top" class="bodyContent">
 <!-- message header end --><p>
-<?php echo $_smarty_tpl->tpl_vars['client_name']->value;?>
-,
+<?php echo $_smarty_tpl->tpl_vars['ticket_message']->value;?>
+
 </p>
 <p>
-Thank you for contacting our support team. A support ticket has now been opened for your request. You will be notified when a response is made by email. The details of your ticket are shown below.
-</p>
-<p>
+----------------------------------------------<br />
+Ticket ID: #<?php echo $_smarty_tpl->tpl_vars['ticket_id']->value;?>
+<br />
 Subject: <?php echo $_smarty_tpl->tpl_vars['ticket_subject']->value;?>
 <br />
-Priority: <?php echo $_smarty_tpl->tpl_vars['ticket_priority']->value;?>
-<br />
 Status: <?php echo $_smarty_tpl->tpl_vars['ticket_status']->value;?>
-
-</p>
-<p>
-You can view the ticket at any time at <?php echo $_smarty_tpl->tpl_vars['ticket_link']->value;?>
-
-</p>
-<p>
-<?php echo $_smarty_tpl->tpl_vars['signature']->value;?>
-
+<br />
+Ticket URL: <?php echo $_smarty_tpl->tpl_vars['ticket_link']->value;?>
+<br />
+----------------------------------------------
 </p>
 <!-- message footer start -->
 </td>

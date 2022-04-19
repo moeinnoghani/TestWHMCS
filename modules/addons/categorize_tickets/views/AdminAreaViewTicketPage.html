@@ -9,32 +9,45 @@
 </head>
 <body>
 
-<div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        Choose Ticket Tag
-        <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <?php
-$tags->each(function ($var){
-        echo "<li class="lists"><a>$var->tag</a></li>";
-        });
-        ?>
-    </ul>
+<!--<div class="dropdown">-->
+<!--    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">-->
+<!--        Choose Ticket Tag-->
+<!--        <span class="caret"></span>-->
+<!--    </button>-->
+<!--    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">-->
+<!--        <?php-->
+<!--$tags->each(function ($var){-->
+<!--        echo "<li><a class='lists' data='{$var->tag}' >$var->tag</a></li>";-->
+<!--        });-->
+<!--        ?>-->
+<!--    </ul>-->
 
-</div>
+<!--</div>-->
+
+<select  class="btn btn-default dropdown-toggle" name="options" id="inlineFormCustomSelect" >
+    <option class=none selected disabled>Choose Ticket Tag</option>
+    <?php
+     $tags->each(function ($var){
+    echo "<option class=none value='{$var->tag}'> $var->tag </option>";
+    });
+    ?>
+
+</select>
+
+
 </body>
+
 </html>
 
 <script>
-    $('.lists').click(function (event) {
-        event.preventDefault()
+    $('#inlineFormCustomSelect').change(function (event) {
         $.ajax({
             url: "addonmodules.php?module=categorize_tickets",
             cache: false,
             type: "POST",
             data: {
-                selectedTag: $("#newtag").val(),
+                ticketId: <?php echo $ticketId;?>,
+                selectedTag: $("#inlineFormCustomSelect").val(),
 
             }
         });
