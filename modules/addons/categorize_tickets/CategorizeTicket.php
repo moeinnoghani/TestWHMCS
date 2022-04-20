@@ -2,6 +2,10 @@
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
+//use Rap2hpoutre\FastExcel\Facades\FastExcel;
+
+include __DIR__ . DIRECTORY_SEPARATOR . "vendor/autoload.php";
+
 
 class CategorizeTicket
 {
@@ -17,6 +21,7 @@ class CategorizeTicket
             'type' => 'ticket',
             'tag' => $tagName
         ]);
+
     }
 
     public function getTicketTags()
@@ -47,13 +52,29 @@ class CategorizeTicket
 
     public function getTicketsDetails()
     {
-
         return Capsule::table('ticketstags')
             ->join('tbltickets', 'tbltickets.id', '=', 'ticketstags.ticket_id')
             ->join('tblclients', 'tbltickets.userid', '=', 'tblclients.id')
             ->join('tblticketdepartments', 'tbltickets.did', '=', 'tblticketdepartments.id')
-            ->select('*','tbltickets.status')
+            ->select('*', 'tbltickets.status')->orderBy('tbltickets.id')
             ->get();
+    }
+
+    public function getFilteredTickets($filterParameter)
+    {
+        return Capsule::table('ticketstags')->where('tag', $filterParameter)
+            ->join('tbltickets', 'tbltickets.id', '=', 'ticketstags.ticket_id')
+            ->join('tblclients', 'tbltickets.userid', '=', 'tblclients.id')
+            ->join('tblticketdepartments', 'tbltickets.did', '=', 'tblticketdepartments.id')
+            ->select('*', 'tbltickets.status')->orderBy('tbltickets.id')
+            ->get();
+    }
+
+    public function exportToExel()
+    {
+        $temp = $this->getTicketsDetails();
+//        (new FastExcel($temp))->export('file.xlsx');
+        (new \Rap2hpoutre\FastExcel\FastExcel($temp))->export(__DIR__ . '/test.xlsx');
     }
 
 

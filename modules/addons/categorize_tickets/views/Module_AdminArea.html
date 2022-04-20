@@ -34,22 +34,49 @@ $tags->each(function ($var){
     <div class="form-group">
         <input id="newtag" type="text" class="form-control" placeholder="Enter New Ticket Tag">
     </div>
-    <button id="selectBtn" type="submit" name="selectBtn" class="btn btn-default">Add</button>
+    <button id="selectBtn" type="submit" name="selectBtn" class="btn btn-default" style="background:#af5dd5;font-size: 20px">Add</button>
 </form>
 <br>><br
 ><br>
 
-<select  class="btn btn-default dropdown-toggle" name="options" id="inlineFormCustomSelect" >
-    <option class=none selected disabled>Choose Ticket Tag</option>
-    <?php
+<!--<select class="btn btn-default dropdown-toggle" name="options" id="inlineFormCustomSelect">-->
+<!--    <option class=none selected disabled>Select Ticket</option>-->
+<!--    <?php-->
+<!--     $tags->each(function ($var){-->
+<!--    echo "-->
+<!--    <option class=none value='{$var->tag}'> $var->tag</option>-->
+<!--    ";-->
+<!--    });-->
+<!--    ?>-->
+
+<!--</select>-->
+
+
+
+<form class="navbar-form navbar-left" role="search" method="post" action="addonmodules.php?module=categorize_tickets">
+    <select class="btn btn-default dropdown-toggle" style="background: #b4dbed;font-size: 20px" name="selectedTag" id="inlineFormCustomSelect">
+        <option class=none selected disabled>Select Ticket</option>
+        <?php
      $tags->each(function ($var){
-    echo "<option class=none value='{$var->tag}'> $var->tag </option>";
-    });
-    ?>
+        echo "
+        <option class=none value='{$var->tag}'> $var->tag</option>
+        ";
+        });
+        ?>
 
-</select>
+    </select>
 
-<table id="myTable" class="table">
+    <button id="selectTagBtn" type="submit" name="selectTagBtn" class="btn btn-default" style="background: #98E775;font-size: 20px">Filter</button>
+</form>
+<br><br><br><br><br>
+
+<form class="navbar-form navbar-left" role="search" method="post" action="addonmodules.php?module=categorize_tickets">
+    <button  type="submit" name="exportExel" class="btn btn-default" style="background:#3a2014;color:#f4f8fb; margin-left: 60px; font-size: 20px">Export to Exel
+
+    </button>
+</form>
+
+<table id="myTable" class="table" style="font-size: larger">
     <thead class="table">
     <tr>
         <th>Ticket Id</th>
@@ -102,4 +129,5 @@ $tags->each(function ($var){
             }
         });
     })
+
 </script>

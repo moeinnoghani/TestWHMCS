@@ -71,8 +71,21 @@ function categorize_tickets_upgrade($vars)
 
 function categorize_tickets_output($vars)
 {
+
     $categorizeTicket = new CategorizeTicket();
     $tickets = $categorizeTicket->getTicketsDetails();
+
+    $tags = $categorizeTicket->getTicketTags();
+
+   if(isset($_POST['exportExel'])){
+
+       $categorizeTicket->exportToExel();
+
+       header('Location: http://localhost/whmcs-8/modules/addons/categorize_tickets/getExel.php');
+       exit();
+
+   }
+
 
     if (isset($_POST['selectedTag']) && isset($_POST['ticketId'])) {
         $categorizeTicket->setTagToTicket($_POST['ticketId'], $_POST['selectedTag']);
@@ -82,7 +95,14 @@ function categorize_tickets_output($vars)
         $categorizeTicket->addNewTag($_POST['newtag']);
     }
 
-    $tags = $categorizeTicket->getTicketTags();
+    if (isset($_POST['selectTagBtn'])) {
+        file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . 'file.json', 'ok');
+        $tickets = $categorizeTicket->getFilteredTickets($_POST['selectedTag']);
 
-    return include __DIR__ . DIRECTORY_SEPARATOR . 'views/Module_AdminArea.html';
+        return include __DIR__ . DIRECTORY_SEPARATOR . 'views/Module_AdminArea.html';
+    } else {
+        return include __DIR__ . DIRECTORY_SEPARATOR . 'views/Module_AdminArea.html';
+    }
+
+
 }
