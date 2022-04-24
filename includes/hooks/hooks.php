@@ -41,7 +41,8 @@ add_hook('ClientAreaPage', 1, function ($vars) {
 
 });
 
-add_hook('AddonConfigSave', 1, function($vars) {
+add_hook('AdminClientServicesTabFields', 1, function($vars) {
+    // Perform hook code here...
     var_dump($vars);
     die();
 });
