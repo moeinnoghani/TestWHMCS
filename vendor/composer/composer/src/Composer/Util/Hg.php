@@ -66,7 +66,7 @@ class Hg
 
             $error = $this->process->getErrorOutput();
         } else {
-            $error = 'The given URL (' . $url . ') does not match the required format (http(s)://(username:password@)example.com/path-to-repository)';
+            $error = 'The given URL (' . $url . ') does not match the required format (http(s)://(username:password@)example.com/path-to-repositories)';
         }
 
         $this->throwException('Failed to clone ' . $url . ', ' . "\n\n" . $error, $url);

@@ -1140,7 +1140,7 @@ class RemoteFilesystem
 
     private function stripCredentialsFromUrl($url)
     {
-        // GitHub repository rename result in redirect locations containing the access_token as GET parameter
+        // GitHub repositories rename result in redirect locations containing the access_token as GET parameter
         // e.g. https://api.github.com/repositories/9999999999?access_token=github_token
         return preg_replace('{([&?]access_token=)[^&]+}', '$1***', $url);
     }

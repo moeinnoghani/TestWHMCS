@@ -25,7 +25,7 @@ class Migrator
     protected $events;
 
     /**
-     * The migration repository implementation.
+     * The migration repositories implementation.
      *
      * @var \Illuminate\Database\Migrations\MigrationRepositoryInterface
      */
@@ -148,7 +148,7 @@ class Migrator
         }
 
         // Next, we will get the next batch number for the migrations so we can insert
-        // correct batch number in the database migrations repository when we store
+        // correct batch number in the database migrations repositories when we store
         // each migration's execution. We will also extract a few of the options.
         $batch = $this->repository->getNextBatchNumber();
 
@@ -202,8 +202,8 @@ class Migrator
         $runTime = round(microtime(true) - $startTime, 2);
 
         // Once we have run a migrations class, we will log that it was run in this
-        // repository so that we don't try to run it next time we do a migration
-        // in the application. A migration repository keeps the migrate order.
+        // repositories so that we don't try to run it next time we do a migration
+        // in the application. A migration repositories keeps the migrate order.
         $this->repository->log($name, $batch);
 
         $this->note("<info>Migrated:</info>  {$name} ({$runTime} seconds)");
@@ -267,7 +267,7 @@ class Migrator
 
         // Next we will run through all of the migrations and call the "down" method
         // which will reverse each migration in order. This getLast method on the
-        // repository already returns these migration's names in reverse order.
+        // repositories already returns these migration's names in reverse order.
         foreach ($migrations as $migration) {
             $migration = (object) $migration;
 
@@ -365,7 +365,7 @@ class Migrator
         $runTime = round(microtime(true) - $startTime, 2);
 
         // Once we have successfully run the migration "down" we will remove it from
-        // the migration repository so it will be considered to have not been run
+        // the migration repositories so it will be considered to have not been run
         // by the application then will be able to fire by any later operation.
         $this->repository->delete($migration);
 
@@ -589,7 +589,7 @@ class Migrator
     }
 
     /**
-     * Get the migration repository instance.
+     * Get the migration repositories instance.
      *
      * @return \Illuminate\Database\Migrations\MigrationRepositoryInterface
      */
@@ -599,7 +599,7 @@ class Migrator
     }
 
     /**
-     * Determine if the migration repository exists.
+     * Determine if the migration repositories exists.
      *
      * @return bool
      */

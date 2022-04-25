@@ -15,7 +15,7 @@ namespace Composer\Repository;
 use Composer\Package\AliasPackage;
 
 /**
- * Writable array repository.
+ * Writable array repositories.
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
  */

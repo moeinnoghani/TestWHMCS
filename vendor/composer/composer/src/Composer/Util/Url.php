@@ -40,14 +40,14 @@ class Url
                 $url = 'https://bitbucket.org/' . $match[1] . '/'. $match[2] . '/get/' . $ref . '.' . $match[4];
             }
         } elseif ($host === 'gitlab.com' || $host === 'www.gitlab.com') {
-            if (preg_match('{^https?://(?:www\.)?gitlab\.com/api/v[34]/projects/([^/]+)/repository/archive\.(zip|tar\.gz|tar\.bz2|tar)\?sha=.+$}i', $url, $match)) {
+            if (preg_match('{^https?://(?:www\.)?gitlab\.com/api/v[34]/projects/([^/]+)/repositories/archive\.(zip|tar\.gz|tar\.bz2|tar)\?sha=.+$}i', $url, $match)) {
                 // update Gitlab archives to the proper reference
-                $url = 'https://gitlab.com/api/v4/projects/' . $match[1] . '/repository/archive.' . $match[2] . '?sha=' . $ref;
+                $url = 'https://gitlab.com/api/v4/projects/' . $match[1] . '/repositories/archive.' . $match[2] . '?sha=' . $ref;
             }
         } elseif (in_array($host, $config->get('github-domains'), true)) {
             $url = preg_replace('{(/repos/[^/]+/[^/]+/(zip|tar)ball)(?:/.+)?$}i', '$1/'.$ref, $url);
         } elseif (in_array($host, $config->get('gitlab-domains'), true)) {
-            $url = preg_replace('{(/api/v[34]/projects/[^/]+/repository/archive\.(?:zip|tar\.gz|tar\.bz2|tar)\?sha=).+$}i', '${1}'.$ref, $url);
+            $url = preg_replace('{(/api/v[34]/projects/[^/]+/repositories/archive\.(?:zip|tar\.gz|tar\.bz2|tar)\?sha=).+$}i', '${1}'.$ref, $url);
         }
 
         return $url;

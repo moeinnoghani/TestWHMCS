@@ -64,7 +64,7 @@ class InitCommand extends BaseCommand
                 new InputOption('require-dev', null, InputOption::VALUE_IS_ARRAY | InputOption::VALUE_REQUIRED, 'Package to require for development with a version constraint, e.g. foo/bar:1.0.0 or foo/bar=1.0.0 or "foo/bar 1.0.0"'),
                 new InputOption('stability', 's', InputOption::VALUE_REQUIRED, 'Minimum stability (empty or one of: '.implode(', ', array_keys(BasePackage::$stabilities)).')'),
                 new InputOption('license', 'l', InputOption::VALUE_REQUIRED, 'License of package'),
-                new InputOption('repository', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Add custom repositories, either by URL or using JSON arrays'),
+                new InputOption('repositories', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Add custom repositories, either by URL or using JSON arrays'),
             ))
             ->setHelp(
                 <<<EOT
@@ -94,7 +94,7 @@ EOT
             unset($options['author']);
         }
 
-        $repositories = $input->getOption('repository');
+        $repositories = $input->getOption('repositories');
         if ($repositories) {
             $config = Factory::createConfig($io);
             foreach ($repositories as $repo) {
@@ -167,7 +167,7 @@ EOT
         $formatter = $this->getHelperSet()->get('formatter');
 
         // initialize repos if configured
-        $repositories = $input->getOption('repository');
+        $repositories = $input->getOption('repositories');
         if ($repositories) {
             $config = Factory::createConfig($io);
             $repos = array(new PlatformRepository);

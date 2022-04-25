@@ -67,9 +67,9 @@ class CreateProjectCommand extends BaseCommand
                 new InputOption('stability', 's', InputOption::VALUE_REQUIRED, 'Minimum-stability allowed (unless a version is specified).'),
                 new InputOption('prefer-source', null, InputOption::VALUE_NONE, 'Forces installation from package sources when possible, including VCS information.'),
                 new InputOption('prefer-dist', null, InputOption::VALUE_NONE, 'Forces installation from package dist even for dev versions.'),
-                new InputOption('repository', null, InputOption::VALUE_REQUIRED, 'Pick a different repository (as url or json config) to look for the package.'),
-                new InputOption('repository-url', null, InputOption::VALUE_REQUIRED, 'DEPRECATED: Use --repository instead.'),
-                new InputOption('add-repository', null, InputOption::VALUE_NONE, 'Add the repository option to the composer.json.'),
+                new InputOption('repositories', null, InputOption::VALUE_REQUIRED, 'Pick a different repositories (as url or json config) to look for the package.'),
+                new InputOption('repositories-url', null, InputOption::VALUE_REQUIRED, 'DEPRECATED: Use --repositories instead.'),
+                new InputOption('add-repositories', null, InputOption::VALUE_NONE, 'Add the repositories option to the composer.json.'),
                 new InputOption('dev', null, InputOption::VALUE_NONE, 'Enables installation of require-dev packages (enabled by default, only present for BC).'),
                 new InputOption('no-dev', null, InputOption::VALUE_NONE, 'Disables installation of require-dev packages.'),
                 new InputOption('no-custom-installers', null, InputOption::VALUE_NONE, 'DEPRECATED: Use no-plugins instead.'),
@@ -102,8 +102,8 @@ To install unstable packages, either specify the version you want, or use the
 To setup a developer workable version you should create the project using the source
 controlled code by appending the <info>'--prefer-source'</info> flag.
 
-To install a package from another repository than the default one you
-can pass the <info>'--repository=https://myrepository.org'</info> flag.
+To install a package from another repositories than the default one you
+can pass the <info>'--repositories=https://myrepository.org'</info> flag.
 
 Read more at https://getcomposer.org/doc/03-cli.md#create-project
 EOT
@@ -137,14 +137,14 @@ EOT
             $preferSource,
             $preferDist,
             !$input->getOption('no-dev'),
-            $input->getOption('repository') ?: $input->getOption('repository-url'),
+            $input->getOption('repositories') ?: $input->getOption('repositories-url'),
             $input->getOption('no-plugins'),
             $input->getOption('no-scripts'),
             $input->getOption('no-progress'),
             $input->getOption('no-install'),
             $input->getOption('ignore-platform-reqs'),
             !$input->getOption('no-secure-http'),
-            $input->getOption('add-repository')
+            $input->getOption('add-repositories')
         );
     }
 
@@ -165,10 +165,10 @@ EOT
 
         $composer = Factory::create($io, null, $disablePlugins);
 
-        // add the repository to the composer.json and use it for the install run later
+        // add the repositories to the composer.json and use it for the install run later
         if ($repository !== null && $addRepository) {
             if ($composer->getLocker()->isLocked()) {
-                $io->writeError('<error>Adding a repository when creating a project that provides a composer.lock file is not supported</error>');
+                $io->writeError('<error>Adding a repositories when creating a project that provides a composer.lock file is not supported</error>');
 
                 return false;
             }

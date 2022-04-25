@@ -96,11 +96,11 @@ To edit the global config.json file:
 
     <comment>%command.full_name% --global</comment>
 
-To add a repository:
+To add a repositories:
 
     <comment>%command.full_name% repositories.foo vcs https://bar.com</comment>
 
-To remove a repository (repo is a short alias for repositories):
+To remove a repositories (repo is a short alias for repositories):
 
     <comment>%command.full_name% --unset repo.foo</comment>
 
@@ -255,7 +255,7 @@ EOT
                     $value = isset($data['repositories']) ? $data['repositories'] : array();
                 } else {
                     if (!isset($data['repositories'][$matches[1]])) {
-                        throw new \InvalidArgumentException('There is no '.$matches[1].' repository defined');
+                        throw new \InvalidArgumentException('There is no '.$matches[1].' repositories defined');
                     }
 
                     $value = $data['repositories'][$matches[1]];

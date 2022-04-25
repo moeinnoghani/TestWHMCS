@@ -13,7 +13,7 @@
 namespace Composer\Repository;
 
 /**
- * Installed filesystem repository.
+ * Installed filesystem repositories.
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
  */

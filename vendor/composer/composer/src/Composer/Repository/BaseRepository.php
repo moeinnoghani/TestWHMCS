@@ -18,7 +18,7 @@ use Composer\Semver\Constraint\Constraint;
 use Composer\Package\Link;
 
 /**
- * Common ancestor class for generic repository functionality.
+ * Common ancestor class for generic repositories functionality.
  *
  * @author Niels Keurentjes <niels.keurentjes@omines.com>
  */

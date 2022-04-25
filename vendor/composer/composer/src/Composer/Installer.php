@@ -383,7 +383,7 @@ class Installer
 
         $this->io->writeError('<info>Loading composer repositories with package information</info>');
 
-        // creating repository pool
+        // creating repositories pool
         $policy = $this->createPolicy();
         $pool = $this->createPool($this->update ? null : $lockedRepository);
         $pool->addRepository($installedRepo, $aliases);
@@ -393,7 +393,7 @@ class Installer
                 $pool->addRepository($repository, $aliases);
             }
         }
-        // Add the locked repository after the others in case we are doing a
+        // Add the locked repositories after the others in case we are doing a
         // partial update so missing packages can be found there still.
         // For installs from lock it's the only one added so it is first
         if ($lockedRepository) {

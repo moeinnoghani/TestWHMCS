@@ -20,10 +20,10 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Create the migration repository';
+    protected $description = 'Create the migration repositories';
 
     /**
-     * The repository instance.
+     * The repositories instance.
      *
      * @var \Illuminate\Database\Migrations\MigrationRepositoryInterface
      */

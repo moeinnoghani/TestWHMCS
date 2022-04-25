@@ -25,7 +25,7 @@ abstract class Manager
     protected $app;
 
     /**
-     * The configuration repository instance.
+     * The configuration repositories instance.
      *
      * @var \Illuminate\Contracts\Config\Repository
      */

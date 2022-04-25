@@ -172,27 +172,27 @@ interface IOInterface
     public function getAuthentications();
 
     /**
-     * Verify if the repository has a authentication information.
+     * Verify if the repositories has a authentication information.
      *
-     * @param string $repositoryName The unique name of repository
+     * @param string $repositoryName The unique name of repositories
      *
      * @return bool
      */
     public function hasAuthentication($repositoryName);
 
     /**
-     * Get the username and password of repository.
+     * Get the username and password of repositories.
      *
-     * @param string $repositoryName The unique name of repository
+     * @param string $repositoryName The unique name of repositories
      *
      * @return array The 'username' and 'password'
      */
     public function getAuthentication($repositoryName);
 
     /**
-     * Set the authentication information for the repository.
+     * Set the authentication information for the repositories.
      *
-     * @param string $repositoryName The unique name of repository
+     * @param string $repositoryName The unique name of repositories
      * @param string $username       The username
      * @param string $password       The password
      */

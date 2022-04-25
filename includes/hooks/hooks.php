@@ -1,5 +1,6 @@
 <?php
 
+use WHMCS\View\Menu\Item as MenuItem;
 //add_hook('UserLogin', 1, function($vars) {
 //
 ////    $command = 'GetClientsDetails';
@@ -41,11 +42,9 @@ add_hook('ClientAreaPage', 1, function ($vars) {
 
 });
 
-add_hook('AdminClientServicesTabFields', 1, function($vars) {
-    // Perform hook code here...
-    var_dump($vars);
-    die();
-});
+
+
+
 
 
 

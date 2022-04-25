@@ -20,8 +20,8 @@ jobs:
             - uses: octokit/request-action@v2.x
               id: getLatestRelease
               with:
-                route: GET /repos/:repository/releases/tags/:tag
-                repository: ${{ github.repository }}
+                route: GET /repos/:repositories/releases/tags/:tag
+                repository: ${{ github.repositories }}
                 tag: ${{ steps.tagName.outputs.tag }}
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -13,7 +13,7 @@
 namespace Composer\Repository;
 
 /**
- * Configurable repository interface.
+ * Configurable repositories interface.
  *
  * @author Lukas Homza <lukashomz@gmail.com>
  */

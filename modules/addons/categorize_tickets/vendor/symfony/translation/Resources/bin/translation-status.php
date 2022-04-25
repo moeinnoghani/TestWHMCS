@@ -71,7 +71,7 @@ foreach (array_slice($argv, 1) as $argumentOrOption) {
 
 foreach ($config['original_files'] as $originalFilePath) {
     if (!file_exists($originalFilePath)) {
-        echo sprintf('The following file does not exist. Make sure that you execute this command at the root dir of the Symfony code repository.%s  %s', \PHP_EOL, $originalFilePath);
+        echo sprintf('The following file does not exist. Make sure that you execute this command at the root dir of the Symfony code repositories.%s  %s', \PHP_EOL, $originalFilePath);
         exit(1);
     }
 }

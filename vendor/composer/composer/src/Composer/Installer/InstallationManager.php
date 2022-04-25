@@ -113,7 +113,7 @@ class InstallationManager
     /**
      * Checks whether provided package is installed in one of the registered installers.
      *
-     * @param InstalledRepositoryInterface $repo    repository in which to check
+     * @param InstalledRepositoryInterface $repo    repositories in which to check
      * @param PackageInterface             $package package instance
      *
      * @return bool
@@ -151,7 +151,7 @@ class InstallationManager
     /**
      * Executes solver operation.
      *
-     * @param RepositoryInterface $repo      repository in which to check
+     * @param RepositoryInterface $repo      repositories in which to check
      * @param OperationInterface  $operation operation instance
      */
     public function execute(RepositoryInterface $repo, OperationInterface $operation)
@@ -163,7 +163,7 @@ class InstallationManager
     /**
      * Executes install operation.
      *
-     * @param RepositoryInterface $repo      repository in which to check
+     * @param RepositoryInterface $repo      repositories in which to check
      * @param InstallOperation    $operation operation instance
      */
     public function install(RepositoryInterface $repo, InstallOperation $operation)
@@ -177,7 +177,7 @@ class InstallationManager
     /**
      * Executes update operation.
      *
-     * @param RepositoryInterface $repo      repository in which to check
+     * @param RepositoryInterface $repo      repositories in which to check
      * @param UpdateOperation     $operation operation instance
      */
     public function update(RepositoryInterface $repo, UpdateOperation $operation)
@@ -201,7 +201,7 @@ class InstallationManager
     /**
      * Uninstalls package.
      *
-     * @param RepositoryInterface $repo      repository in which to check
+     * @param RepositoryInterface $repo      repositories in which to check
      * @param UninstallOperation  $operation operation instance
      */
     public function uninstall(RepositoryInterface $repo, UninstallOperation $operation)
@@ -214,7 +214,7 @@ class InstallationManager
     /**
      * Executes markAliasInstalled operation.
      *
-     * @param RepositoryInterface         $repo      repository in which to check
+     * @param RepositoryInterface         $repo      repositories in which to check
      * @param MarkAliasInstalledOperation $operation operation instance
      */
     public function markAliasInstalled(RepositoryInterface $repo, MarkAliasInstalledOperation $operation)
@@ -229,7 +229,7 @@ class InstallationManager
     /**
      * Executes markAlias operation.
      *
-     * @param RepositoryInterface           $repo      repository in which to check
+     * @param RepositoryInterface           $repo      repositories in which to check
      * @param MarkAliasUninstalledOperation $operation operation instance
      */
     public function markAliasUninstalled(RepositoryInterface $repo, MarkAliasUninstalledOperation $operation)

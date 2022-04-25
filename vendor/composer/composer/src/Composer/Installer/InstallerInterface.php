@@ -35,7 +35,7 @@ interface InstallerInterface
     /**
      * Checks that provided package is installed.
      *
-     * @param InstalledRepositoryInterface $repo    repository in which to check
+     * @param InstalledRepositoryInterface $repo    repositories in which to check
      * @param PackageInterface             $package package instance
      *
      * @return bool
@@ -45,7 +45,7 @@ interface InstallerInterface
     /**
      * Installs specific package.
      *
-     * @param InstalledRepositoryInterface $repo    repository in which to check
+     * @param InstalledRepositoryInterface $repo    repositories in which to check
      * @param PackageInterface             $package package instance
      */
     public function install(InstalledRepositoryInterface $repo, PackageInterface $package);
@@ -53,7 +53,7 @@ interface InstallerInterface
     /**
      * Updates specific package.
      *
-     * @param InstalledRepositoryInterface $repo    repository in which to check
+     * @param InstalledRepositoryInterface $repo    repositories in which to check
      * @param PackageInterface             $initial already installed package version
      * @param PackageInterface             $target  updated version
      *
@@ -64,7 +64,7 @@ interface InstallerInterface
     /**
      * Uninstalls specific package.
      *
-     * @param InstalledRepositoryInterface $repo    repository in which to check
+     * @param InstalledRepositoryInterface $repo    repositories in which to check
      * @param PackageInterface             $package package instance
      */
     public function uninstall(InstalledRepositoryInterface $repo, PackageInterface $package);

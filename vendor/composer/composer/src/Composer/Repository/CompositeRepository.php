@@ -15,7 +15,7 @@ namespace Composer\Repository;
 use Composer\Package\PackageInterface;
 
 /**
- * Composite repository.
+ * Composite repositories.
  *
  * @author Beau Simensen <beau@dflydev.com>
  */
@@ -148,7 +148,7 @@ class CompositeRepository extends BaseRepository
     }
 
     /**
-     * Add a repository.
+     * Add a repositories.
      * @param RepositoryInterface $repository
      */
     public function addRepository(RepositoryInterface $repository)

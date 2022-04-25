@@ -164,13 +164,13 @@ class Config
             $this->repositories = array_reverse($this->repositories, true);
             $newRepos = array_reverse($config['repositories'], true);
             foreach ($newRepos as $name => $repository) {
-                // disable a repository by name
+                // disable a repositories by name
                 if (false === $repository) {
                     $this->disableRepoByName($name);
                     continue;
                 }
 
-                // disable a repository with an anonymous {"name": false} repo
+                // disable a repositories with an anonymous {"name": false} repo
                 if (is_array($repository) && 1 === count($repository) && false === current($repository)) {
                     $this->disableRepoByName(key($repository));
                     continue;

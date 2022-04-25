@@ -982,7 +982,7 @@ class ResponseTest extends ResponseTestCase
     }
 
     /**
-     * @see http://github.com/zendframework/zend-diactoros for the canonical source repository
+     * @see http://github.com/zendframework/zend-diactoros for the canonical source repositories
      *
      * @author Fábio Pacheco
      * @copyright Copyright (c) 2015-2016 Zend Technologies USA Inc. (http://www.zend.com)

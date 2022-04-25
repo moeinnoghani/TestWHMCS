@@ -21,7 +21,7 @@ namespace Composer\Config;
 interface ConfigSourceInterface
 {
     /**
-     * Add a repository
+     * Add a repositories
      *
      * @param string $name   Name
      * @param array  $config Configuration
@@ -29,7 +29,7 @@ interface ConfigSourceInterface
     public function addRepository($name, $config);
 
     /**
-     * Remove a repository
+     * Remove a repositories
      *
      * @param string $name
      */

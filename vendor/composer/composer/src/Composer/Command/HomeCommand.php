@@ -36,19 +36,19 @@ class HomeCommand extends BaseCommand
         $this
             ->setName('browse')
             ->setAliases(array('home'))
-            ->setDescription('Opens the package\'s repository URL or homepage in your browser.')
+            ->setDescription('Opens the package\'s repositories URL or homepage in your browser.')
             ->setDefinition(array(
                 new InputArgument('packages', InputArgument::IS_ARRAY, 'Package(s) to browse to.'),
-                new InputOption('homepage', 'H', InputOption::VALUE_NONE, 'Open the homepage instead of the repository URL.'),
-                new InputOption('show', 's', InputOption::VALUE_NONE, 'Only show the homepage or repository URL.'),
+                new InputOption('homepage', 'H', InputOption::VALUE_NONE, 'Open the homepage instead of the repositories URL.'),
+                new InputOption('show', 's', InputOption::VALUE_NONE, 'Only show the homepage or repositories URL.'),
             ))
             ->setHelp(
                 <<<EOT
-The home command opens or shows a package's repository URL or
+The home command opens or shows a package's repositories URL or
 homepage in your default browser.
 
 To open the homepage by default, use -H or --homepage.
-To show instead of open the repository or homepage URL, use -s or --show.
+To show instead of open the repositories or homepage URL, use -s or --show.
 
 Read more at https://getcomposer.org/doc/03-cli.md#browse-home
 EOT
@@ -90,7 +90,7 @@ EOT
 
             if (!$handled) {
                 $return = 1;
-                $io->writeError('<warning>'.($input->getOption('homepage') ? 'Invalid or missing homepage' : 'Invalid or missing repository URL').' for '.$packageName.'</warning>');
+                $io->writeError('<warning>'.($input->getOption('homepage') ? 'Invalid or missing homepage' : 'Invalid or missing repositories URL').' for '.$packageName.'</warning>');
             }
         }
 

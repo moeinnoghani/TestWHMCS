@@ -17,7 +17,7 @@ use Composer\Package\Loader\ArrayLoader;
 use Composer\Package\Dumper\ArrayDumper;
 
 /**
- * Filesystem repository.
+ * Filesystem repositories.
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  * @author Jordi Boggiano <j.boggiano@seld.be>
@@ -27,9 +27,9 @@ class FilesystemRepository extends WritableArrayRepository
     private $file;
 
     /**
-     * Initializes filesystem repository.
+     * Initializes filesystem repositories.
      *
-     * @param JsonFile $repositoryFile repository json file
+     * @param JsonFile $repositoryFile repositories json file
      */
     public function __construct(JsonFile $repositoryFile)
     {
@@ -38,7 +38,7 @@ class FilesystemRepository extends WritableArrayRepository
     }
 
     /**
-     * Initializes repository (reads file, or remote address).
+     * Initializes repositories (reads file, or remote address).
      */
     protected function initialize()
     {
@@ -57,10 +57,10 @@ class FilesystemRepository extends WritableArrayRepository
             }
 
             if (!is_array($packages)) {
-                throw new \UnexpectedValueException('Could not parse package list from the repository');
+                throw new \UnexpectedValueException('Could not parse package list from the repositories');
             }
         } catch (\Exception $e) {
-            throw new InvalidRepositoryException('Invalid repository data in '.$this->file->getPath().', packages could not be loaded: ['.get_class($e).'] '.$e->getMessage());
+            throw new InvalidRepositoryException('Invalid repositories data in '.$this->file->getPath().', packages could not be loaded: ['.get_class($e).'] '.$e->getMessage());
         }
 
         $loader = new ArrayLoader(null, true);
@@ -77,7 +77,7 @@ class FilesystemRepository extends WritableArrayRepository
     }
 
     /**
-     * Writes writable repository.
+     * Writes writable repositories.
      */
     public function write()
     {

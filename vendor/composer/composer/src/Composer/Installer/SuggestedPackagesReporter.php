@@ -91,7 +91,7 @@ class SuggestedPackagesReporter
 
     /**
      * Output suggested packages.
-     * Do not list the ones already installed if installed repository provided.
+     * Do not list the ones already installed if installed repositories provided.
      *
      * @param  RepositoryInterface       $installedRepo Installed packages
      * @return SuggestedPackagesReporter

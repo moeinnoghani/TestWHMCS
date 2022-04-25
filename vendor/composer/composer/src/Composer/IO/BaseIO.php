@@ -82,9 +82,9 @@ abstract class BaseIO implements IOInterface, LoggerInterface
     }
 
     /**
-     * Check for overwrite and set the authentication information for the repository.
+     * Check for overwrite and set the authentication information for the repositories.
      *
-     * @param string $repositoryName The unique name of repository
+     * @param string $repositoryName The unique name of repositories
      * @param string $username       The username
      * @param string $password       The password
      */

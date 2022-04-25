@@ -283,8 +283,8 @@ abstract class VcsDownloader implements DownloaderInterface, ChangeReportInterfa
     abstract protected function getCommitLogs($fromReference, $toReference, $path);
 
     /**
-     * Checks if VCS metadata repository has been initialized
-     * repository example: .git|.svn|.hg
+     * Checks if VCS metadata repositories has been initialized
+     * repositories example: .git|.svn|.hg
      *
      * @param  string $path
      * @return bool

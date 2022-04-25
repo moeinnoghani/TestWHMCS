@@ -242,9 +242,9 @@ class PluginManager
     }
 
     /**
-     * Load all plugins and installers from a repository
+     * Load all plugins and installers from a repositories
      *
-     * Note that plugins in the specified repository that rely on events that
+     * Note that plugins in the specified repositories that rely on events that
      * have fired prior to loading will be missed. This means you likely want to
      * call this method as early as possible.
      *

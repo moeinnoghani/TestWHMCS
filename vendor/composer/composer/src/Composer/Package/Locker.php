@@ -47,7 +47,7 @@ class Locker
      *
      * @param IOInterface         $io
      * @param JsonFile            $lockFile             lockfile loader
-     * @param RepositoryManager   $repositoryManager    repository manager instance
+     * @param RepositoryManager   $repositoryManager    repositories manager instance
      * @param InstallationManager $installationManager  installation manager instance
      * @param string              $composerFileContents The contents of the composer file
      */

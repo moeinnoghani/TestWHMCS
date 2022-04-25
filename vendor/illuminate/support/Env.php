@@ -18,7 +18,7 @@ class Env
     protected static $putenv = true;
 
     /**
-     * The environment repository instance.
+     * The environment repositories instance.
      *
      * @var \Dotenv\Repository\RepositoryInterface|null
      */
@@ -47,7 +47,7 @@ class Env
     }
 
     /**
-     * Get the environment repository instance.
+     * Get the environment repositories instance.
      *
      * @return \Dotenv\Repository\RepositoryInterface
      */

@@ -20,7 +20,7 @@ use Composer\Semver\Constraint\ConstraintInterface;
 use Composer\Semver\Constraint\Constraint;
 
 /**
- * A repository implementation that simply stores packages in an array
+ * A repositories implementation that simply stores packages in an array
  *
  * @author Nils Adermann <naderman@naderman.de>
  */
@@ -137,7 +137,7 @@ class ArrayRepository extends BaseRepository
     }
 
     /**
-     * Adds a new package to the repository
+     * Adds a new package to the repositories
      *
      * @param PackageInterface $package
      */
@@ -166,7 +166,7 @@ class ArrayRepository extends BaseRepository
     }
 
     /**
-     * Removes package from repository.
+     * Removes package from repositories.
      *
      * @param PackageInterface $package package instance
      */
@@ -199,7 +199,7 @@ class ArrayRepository extends BaseRepository
     }
 
     /**
-     * Returns the number of packages in this repository
+     * Returns the number of packages in this repositories
      *
      * @return int Number of packages
      */

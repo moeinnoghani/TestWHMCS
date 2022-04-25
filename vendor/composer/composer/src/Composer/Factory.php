@@ -331,11 +331,11 @@ class Factory
         $dispatcher = new EventDispatcher($composer, $io);
         $composer->setEventDispatcher($dispatcher);
 
-        // initialize repository manager
+        // initialize repositories manager
         $rm = RepositoryFactory::manager($io, $config, $dispatcher, $rfs);
         $composer->setRepositoryManager($rm);
 
-        // load local repository
+        // load local repositories
         $this->addLocalRepository($io, $rm, $vendorDir);
 
         // force-set the version of the global package if not defined as
@@ -550,7 +550,7 @@ class Factory
     }
 
     /**
-     * @param WritableRepositoryInterface   $repo repository to purge packages from
+     * @param WritableRepositoryInterface   $repo repositories to purge packages from
      * @param Installer\InstallationManager $im   manager to check whether packages are still installed
      */
     protected function purgePackages(WritableRepositoryInterface $repo, Installer\InstallationManager $im)

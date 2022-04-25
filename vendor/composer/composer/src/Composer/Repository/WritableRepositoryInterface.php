@@ -15,26 +15,26 @@ namespace Composer\Repository;
 use Composer\Package\PackageInterface;
 
 /**
- * Writable repository interface.
+ * Writable repositories interface.
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
 interface WritableRepositoryInterface extends RepositoryInterface
 {
     /**
-     * Writes repository (f.e. to the disc).
+     * Writes repositories (f.e. to the disc).
      */
     public function write();
 
     /**
-     * Adds package to the repository.
+     * Adds package to the repositories.
      *
      * @param PackageInterface $package package instance
      */
     public function addPackage(PackageInterface $package);
 
     /**
-     * Removes package from the repository.
+     * Removes package from the repositories.
      *
      * @param PackageInterface $package package instance
      */

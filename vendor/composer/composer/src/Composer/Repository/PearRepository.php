@@ -56,7 +56,7 @@ class PearRepository extends ArrayRepository implements ConfigurableRepositoryIn
 
         $urlBits = parse_url($repoConfig['url']);
         if (empty($urlBits['scheme']) || empty($urlBits['host'])) {
-            throw new \UnexpectedValueException('Invalid url given for PEAR repository: '.$repoConfig['url']);
+            throw new \UnexpectedValueException('Invalid url given for PEAR repositories: '.$repoConfig['url']);
         }
 
         $this->url = rtrim($repoConfig['url'], '/');
@@ -76,13 +76,13 @@ class PearRepository extends ArrayRepository implements ConfigurableRepositoryIn
     {
         parent::initialize();
 
-        $this->io->writeError('Initializing PEAR repository '.$this->url);
+        $this->io->writeError('Initializing PEAR repositories '.$this->url);
 
         $reader = new ChannelReader($this->rfs);
         try {
             $channelInfo = $reader->read($this->url);
         } catch (\Exception $e) {
-            $this->io->writeError('<warning>PEAR repository from '.$this->url.' could not be loaded. '.$e->getMessage().'</warning>');
+            $this->io->writeError('<warning>PEAR repositories from '.$this->url.' could not be loaded. '.$e->getMessage().'</warning>');
 
             return;
         }
@@ -124,8 +124,8 @@ class PearRepository extends ArrayRepository implements ConfigurableRepositoryIn
                 $conflicts = array();
                 $replaces = array();
 
-                // alias package only when its channel matches repository channel,
-                // cause we've know only repository channel alias
+                // alias package only when its channel matches repositories channel,
+                // cause we've know only repositories channel alias
                 if ($channelInfo->getName() == $packageDefinition->getChannelName()) {
                     $composerPackageAlias = $this->buildComposerPackageName($channelInfo->getAlias(), $packageDefinition->getPackageName());
                     $aliasConstraint = new Constraint('==', $normalizedVersion);

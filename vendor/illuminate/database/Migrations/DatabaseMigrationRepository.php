@@ -28,7 +28,7 @@ class DatabaseMigrationRepository implements MigrationRepositoryInterface
     protected $connection;
 
     /**
-     * Create a new database migration repository instance.
+     * Create a new database migration repositories instance.
      *
      * @param  \Illuminate\Database\ConnectionResolverInterface  $resolver
      * @param  string  $table
@@ -139,7 +139,7 @@ class DatabaseMigrationRepository implements MigrationRepositoryInterface
     }
 
     /**
-     * Create the migration repository data store.
+     * Create the migration repositories data store.
      *
      * @return void
      */
@@ -158,7 +158,7 @@ class DatabaseMigrationRepository implements MigrationRepositoryInterface
     }
 
     /**
-     * Determine if the migration repository exists.
+     * Determine if the migration repositories exists.
      *
      * @return bool
      */

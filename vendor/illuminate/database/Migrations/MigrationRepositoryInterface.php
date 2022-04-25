@@ -58,14 +58,14 @@ interface MigrationRepositoryInterface
     public function getNextBatchNumber();
 
     /**
-     * Create the migration repository data store.
+     * Create the migration repositories data store.
      *
      * @return void
      */
     public function createRepository();
 
     /**
-     * Determine if the migration repository exists.
+     * Determine if the migration repositories exists.
      *
      * @return bool
      */

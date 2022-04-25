@@ -51,13 +51,13 @@ class MigrationServiceProvider extends ServiceProvider implements DeferrableProv
     }
 
     /**
-     * Register the migration repository service.
+     * Register the migration repositories service.
      *
      * @return void
      */
     protected function registerRepository()
     {
-        $this->app->singleton('migration.repository', function ($app) {
+        $this->app->singleton('migration.repositories', function ($app) {
             $table = $app['config']['database.migrations'];
 
             return new DatabaseMigrationRepository($app['db'], $table);
@@ -75,7 +75,7 @@ class MigrationServiceProvider extends ServiceProvider implements DeferrableProv
         // files in the application. We'll pass in our database connection resolver
         // so the migrator can resolve any of these connections when it needs to.
         $this->app->singleton('migrator', function ($app) {
-            $repository = $app['migration.repository'];
+            $repository = $app['migration.repositories'];
 
             return new Migrator($repository, $app['db'], $app['files'], $app['events']);
         });
@@ -140,7 +140,7 @@ class MigrationServiceProvider extends ServiceProvider implements DeferrableProv
     protected function registerMigrateInstallCommand()
     {
         $this->app->singleton('command.migrate.install', function ($app) {
-            return new InstallCommand($app['migration.repository']);
+            return new InstallCommand($app['migration.repositories']);
         });
     }
 
@@ -219,7 +219,7 @@ class MigrationServiceProvider extends ServiceProvider implements DeferrableProv
     public function provides()
     {
         return array_merge([
-            'migrator', 'migration.repository', 'migration.creator',
+            'migrator', 'migration.repositories', 'migration.creator',
         ], array_values($this->commands));
     }
 }

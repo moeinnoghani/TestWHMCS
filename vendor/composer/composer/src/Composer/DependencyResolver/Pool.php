@@ -78,9 +78,9 @@ class Pool implements \Countable
     }
 
     /**
-     * Adds a repository and its packages to this package pool
+     * Adds a repositories and its packages to this package pool
      *
-     * @param RepositoryInterface $repo        A package repository
+     * @param RepositoryInterface $repo        A package repositories
      * @param array               $rootAliases
      */
     public function addRepository(RepositoryInterface $repo, $rootAliases = array())
@@ -143,7 +143,7 @@ class Pool implements \Countable
         $priority = array_search($repo, $this->repositories, true);
 
         if (false === $priority) {
-            throw new \RuntimeException("Could not determine repository priority. The repository was not registered in the pool.");
+            throw new \RuntimeException("Could not determine repositories priority. The repositories was not registered in the pool.");
         }
 
         return -$priority;

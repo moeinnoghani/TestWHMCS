@@ -74,7 +74,7 @@ abstract class BitbucketDriver extends VcsDriver
     }
 
     /**
-     * Attempts to fetch the repository data via the BitBucket API and
+     * Attempts to fetch the repositories data via the BitBucket API and
      * sets some parameters which are used in other methods
      *
      * @return bool
@@ -403,7 +403,7 @@ abstract class BitbucketDriver extends VcsDriver
             $this->fallbackDriver = null;
 
             $this->io->writeError(
-                '<error>Failed to clone the ' . $this->generateSshUrl() . ' repository, try running in interactive mode'
+                '<error>Failed to clone the ' . $this->generateSshUrl() . ' repositories, try running in interactive mode'
                     . ' so that you can enter your Bitbucket OAuth consumer credentials</error>'
             );
             throw $e;

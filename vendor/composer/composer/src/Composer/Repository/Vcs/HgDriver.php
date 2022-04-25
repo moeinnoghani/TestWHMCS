@@ -57,10 +57,10 @@ class HgDriver extends VcsDriver
 
             $hgUtils = new HgUtils($this->io, $this->config, $this->process);
 
-            // update the repo if it is a valid hg repository
+            // update the repo if it is a valid hg repositories
             if (is_dir($this->repoDir) && 0 === $this->process->execute('hg summary', $output, $this->repoDir)) {
                 if (0 !== $this->process->execute('hg pull', $output, $this->repoDir)) {
-                    $this->io->writeError('<error>Failed to update '.$this->url.', package information from this repository may be outdated ('.$this->process->getErrorOutput().')</error>');
+                    $this->io->writeError('<error>Failed to update '.$this->url.', package information from this repositories may be outdated ('.$this->process->getErrorOutput().')</error>');
                 }
             } else {
                 // clean up directory and do a fresh clone into it

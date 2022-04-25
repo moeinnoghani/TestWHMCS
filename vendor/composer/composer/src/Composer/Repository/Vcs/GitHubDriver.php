@@ -444,7 +444,7 @@ class GitHubDriver extends VcsDriver
                     // non-authenticated requests get no scopesNeeded, so ask for credentials
                     // authenticated requests which failed some scopes should ask for new credentials too
                     if (!$headers || !count($scopesNeeded) || count($scopesFailed)) {
-                        $gitHubUtil->authorizeOAuthInteractively($this->originUrl, 'Your GitHub credentials are required to fetch private repository metadata (<info>'.$this->url.'</info>)');
+                        $gitHubUtil->authorizeOAuthInteractively($this->originUrl, 'Your GitHub credentials are required to fetch private repositories metadata (<info>'.$this->url.'</info>)');
                     }
 
                     return parent::getContents($url);
@@ -462,7 +462,7 @@ class GitHubDriver extends VcsDriver
 
                     if (!$this->io->hasAuthentication($this->originUrl)) {
                         if (!$this->io->isInteractive()) {
-                            $this->io->writeError('<error>GitHub API limit exhausted. Failed to get metadata for the '.$this->url.' repository, try running in interactive mode so that you can enter your GitHub credentials to increase the API limit</error>');
+                            $this->io->writeError('<error>GitHub API limit exhausted. Failed to get metadata for the '.$this->url.' repositories, try running in interactive mode so that you can enter your GitHub credentials to increase the API limit</error>');
                             throw $e;
                         }
 
@@ -526,7 +526,7 @@ class GitHubDriver extends VcsDriver
         $this->isPrivate = true;
 
         try {
-            // If this repository may be private (hard to say for sure,
+            // If this repositories may be private (hard to say for sure,
             // GitHub returns 404 for private repositories) and we
             // cannot ask for authentication credentials (because we
             // are not interactive) then we fallback to GitDriver.
@@ -536,7 +536,7 @@ class GitHubDriver extends VcsDriver
         } catch (\RuntimeException $e) {
             $this->gitDriver = null;
 
-            $this->io->writeError('<error>Failed to clone the '.$this->generateSshUrl().' repository, try running in interactive mode so that you can enter your GitHub credentials</error>');
+            $this->io->writeError('<error>Failed to clone the '.$this->generateSshUrl().' repositories, try running in interactive mode so that you can enter your GitHub credentials</error>');
             throw $e;
         }
     }

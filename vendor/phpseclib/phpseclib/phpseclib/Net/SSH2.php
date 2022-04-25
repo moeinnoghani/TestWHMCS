@@ -4516,7 +4516,7 @@ class SSH2
         $kex_algorithms = array(
             // Elliptic Curve Diffie-Hellman Key Agreement (ECDH) using
             // Curve25519. See doc/curve25519-sha256@libssh.org.txt in the
-            // libssh repository for more information.
+            // libssh repositories for more information.
             'curve25519-sha256@libssh.org',
 
             'diffie-hellman-group-exchange-sha256',// RFC 4419

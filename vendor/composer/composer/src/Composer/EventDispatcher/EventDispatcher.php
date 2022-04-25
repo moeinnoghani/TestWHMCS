@@ -103,7 +103,7 @@ class EventDispatcher
      * @param bool                $devMode       Whether or not we are in dev mode
      * @param PolicyInterface     $policy        The policy
      * @param Pool                $pool          The pool
-     * @param CompositeRepository $installedRepo The installed repository
+     * @param CompositeRepository $installedRepo The installed repositories
      * @param Request             $request       The request
      * @param array               $operations    The list of operations
      * @param OperationInterface  $operation     The package being installed/updated/removed
@@ -123,7 +123,7 @@ class EventDispatcher
      * @param bool                $devMode       Whether or not we are in dev mode
      * @param PolicyInterface     $policy        The policy
      * @param Pool                $pool          The pool
-     * @param CompositeRepository $installedRepo The installed repository
+     * @param CompositeRepository $installedRepo The installed repositories
      * @param Request             $request       The request
      * @param array               $operations    The list of operations
      *

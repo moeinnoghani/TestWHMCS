@@ -74,9 +74,9 @@ class GitLabDriver extends VcsDriver
     const URL_REGEX = '#^(?:(?P<scheme>https?)://(?P<domain>.+?)(?::(?P<port>[0-9]+))?/|git@(?P<domain2>[^:]+):)(?P<parts>.+)/(?P<repo>[^/]+?)(?:\.git|/)?$#';
 
     /**
-     * Extracts information from the repository url.
+     * Extracts information from the repositories url.
      *
-     * SSH urls use https by default. Set "secure-http": false on the repository config to use http instead.
+     * SSH urls use https by default. Set "secure-http": false on the repositories config to use http instead.
      *
      * {@inheritDoc}
      */
@@ -172,7 +172,7 @@ class GitLabDriver extends VcsDriver
             }
         }
 
-        $resource = $this->getApiUrl().'/repository/files/'.$this->urlEncodeAll($file).'/raw?ref='.$identifier;
+        $resource = $this->getApiUrl().'/repositories/files/'.$this->urlEncodeAll($file).'/raw?ref='.$identifier;
 
         try {
             $content = $this->getContents($resource);
@@ -228,7 +228,7 @@ class GitLabDriver extends VcsDriver
      */
     public function getDist($identifier)
     {
-        $url = $this->getApiUrl().'/repository/archive.zip?sha='.$identifier;
+        $url = $this->getApiUrl().'/repositories/archive.zip?sha='.$identifier;
 
         return array('type' => 'zip', 'url' => $url, 'reference' => $identifier, 'shasum' => '');
     }
@@ -325,7 +325,7 @@ class GitLabDriver extends VcsDriver
     protected function getReferences($type)
     {
         $perPage = 100;
-        $resource = $this->getApiUrl().'/repository/'.$type.'?per_page='.$perPage;
+        $resource = $this->getApiUrl().'/repositories/'.$type.'?per_page='.$perPage;
 
         $references = array();
         do {
@@ -357,7 +357,7 @@ class GitLabDriver extends VcsDriver
         if (isset($this->project['visibility'])) {
             $this->isPrivate = $this->project['visibility'] !== 'public';
         } else {
-            // client is not authendicated, therefore repository has to be public
+            // client is not authendicated, therefore repositories has to be public
             $this->isPrivate = false;
         }
     }
@@ -371,7 +371,7 @@ class GitLabDriver extends VcsDriver
                 $url = $this->generateSshUrl();
             }
 
-            // If this repository may be private and we
+            // If this repositories may be private and we
             // cannot ask for authentication credentials (because we
             // are not interactive) then we fallback to GitDriver.
             $this->setupGitDriver($url);
@@ -380,7 +380,7 @@ class GitLabDriver extends VcsDriver
         } catch (\RuntimeException $e) {
             $this->gitDriver = null;
 
-            $this->io->writeError('<error>Failed to clone the '.$url.' repository, try running in interactive mode so that you can enter your credentials</error>');
+            $this->io->writeError('<error>Failed to clone the '.$url.' repositories, try running in interactive mode so that you can enter your credentials</error>');
             throw $e;
         }
     }
@@ -480,7 +480,7 @@ class GitLabDriver extends VcsDriver
                         return $this->attemptCloneFallback();
                     }
                     $this->io->writeError('<warning>Failed to download ' . $this->namespace . '/' . $this->repository . ':' . $e->getMessage() . '</warning>');
-                    $gitLabUtil->authorizeOAuthInteractively($this->scheme, $this->originUrl, 'Your credentials are required to fetch private repository metadata (<info>'.$this->url.'</info>)');
+                    $gitLabUtil->authorizeOAuthInteractively($this->scheme, $this->originUrl, 'Your credentials are required to fetch private repositories metadata (<info>'.$this->url.'</info>)');
 
                     return parent::getContents($url);
 
@@ -503,7 +503,7 @@ class GitLabDriver extends VcsDriver
 
     /**
      * Uses the config `gitlab-domains` to see if the driver supports the url for the
-     * repository given.
+     * repositories given.
      *
      * {@inheritDoc}
      */

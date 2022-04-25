@@ -78,7 +78,7 @@ class ComposerRepository extends ArrayRepository implements ConfigurableReposito
 
         $urlBits = parse_url($repoConfig['url']);
         if ($urlBits === false || empty($urlBits['scheme'])) {
-            throw new \UnexpectedValueException('Invalid url given for Composer repository: '.$repoConfig['url']);
+            throw new \UnexpectedValueException('Invalid url given for Composer repositories: '.$repoConfig['url']);
         }
 
         if (!isset($repoConfig['options'])) {
@@ -475,7 +475,7 @@ class ComposerRepository extends ArrayRepository implements ConfigurableReposito
     }
 
     /**
-     * Adds a new package to the repository
+     * Adds a new package to the repositories
      *
      * @param PackageInterface $package
      */

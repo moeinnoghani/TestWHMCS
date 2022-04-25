@@ -16,7 +16,7 @@ abstract class Manager
     protected $container;
 
     /**
-     * The configuration repository instance.
+     * The configuration repositories instance.
      *
      * @var \Illuminate\Contracts\Config\Repository
      */

@@ -13,7 +13,7 @@
 namespace Composer\Repository;
 
 /**
- * Installed array repository.
+ * Installed array repositories.
  *
  * This is used for serving the RootPackage inside an in-memory InstalledRepository
  *

@@ -51,7 +51,7 @@ abstract class VcsDriver implements VcsDriverInterface
     /**
      * Constructor.
      *
-     * @param array            $repoConfig       The repository configuration
+     * @param array            $repoConfig       The repositories configuration
      * @param IOInterface      $io               The IO instance
      * @param Config           $config           The composer configuration
      * @param ProcessExecutor  $process          Process instance, injectable for mocking

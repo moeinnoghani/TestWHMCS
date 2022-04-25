@@ -58,14 +58,14 @@ interface VcsDriverInterface
     public function getRootIdentifier();
 
     /**
-     * Return list of branches in the repository
+     * Return list of branches in the repositories
      *
      * @return array Branch names as keys, identifiers as values
      */
     public function getBranches();
 
     /**
-     * Return list of tags in the repository
+     * Return list of tags in the repositories
      *
      * @return array Tag names as keys, identifiers as values
      */
@@ -84,18 +84,18 @@ interface VcsDriverInterface
     public function getSource($identifier);
 
     /**
-     * Return the URL of the repository
+     * Return the URL of the repositories
      *
      * @return string
      */
     public function getUrl();
 
     /**
-     * Return true if the repository has a composer file for a given identifier,
+     * Return true if the repositories has a composer file for a given identifier,
      * false otherwise.
      *
      * @param  string $identifier Any identifier to a specific branch/tag/commit
-     * @return bool   Whether the repository has a composer file for a given identifier.
+     * @return bool   Whether the repositories has a composer file for a given identifier.
      */
     public function hasComposerFile($identifier);
 

@@ -102,30 +102,30 @@ interface PackageInterface
     public function getInstallationSource();
 
     /**
-     * Returns the repository type of this package, e.g. git, svn
+     * Returns the repositories type of this package, e.g. git, svn
      *
-     * @return string The repository type
+     * @return string The repositories type
      */
     public function getSourceType();
 
     /**
-     * Returns the repository url of this package, e.g. git://github.com/naderman/composer.git
+     * Returns the repositories url of this package, e.g. git://github.com/naderman/composer.git
      *
-     * @return string The repository url
+     * @return string The repositories url
      */
     public function getSourceUrl();
 
     /**
-     * Returns the repository urls of this package including mirrors, e.g. git://github.com/naderman/composer.git
+     * Returns the repositories urls of this package including mirrors, e.g. git://github.com/naderman/composer.git
      *
      * @return array
      */
     public function getSourceUrls();
 
     /**
-     * Returns the repository reference of this package, e.g. master, 1.0.0 or a commit hash for git
+     * Returns the repositories reference of this package, e.g. master, 1.0.0 or a commit hash for git
      *
-     * @return string The repository reference
+     * @return string The repositories reference
      */
     public function getSourceReference();
 
@@ -139,7 +139,7 @@ interface PackageInterface
     /**
      * Returns the type of the distribution archive of this version, e.g. zip, tarball
      *
-     * @return string The repository type
+     * @return string The repositories type
      */
     public function getDistType();
 
@@ -297,14 +297,14 @@ interface PackageInterface
     public function getIncludePaths();
 
     /**
-     * Stores a reference to the repository that owns the package
+     * Stores a reference to the repositories that owns the package
      *
      * @param RepositoryInterface $repository
      */
     public function setRepository(RepositoryInterface $repository);
 
     /**
-     * Returns a reference to the repository that owns the package
+     * Returns a reference to the repositories that owns the package
      *
      * @return RepositoryInterface
      */

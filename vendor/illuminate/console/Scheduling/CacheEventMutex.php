@@ -7,7 +7,7 @@ use Illuminate\Contracts\Cache\Factory as Cache;
 class CacheEventMutex implements EventMutex, CacheAware
 {
     /**
-     * The cache repository implementation.
+     * The cache repositories implementation.
      *
      * @var \Illuminate\Contracts\Cache\Factory
      */

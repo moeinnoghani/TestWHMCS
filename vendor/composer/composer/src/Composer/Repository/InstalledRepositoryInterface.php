@@ -13,7 +13,7 @@
 namespace Composer\Repository;
 
 /**
- * Installable repository interface.
+ * Installable repositories interface.
  *
  * Just used to tag installed repositories so the base classes can act differently on Alias packages
  *

@@ -98,7 +98,7 @@ class Git
         $auth = null;
         if ($bypassSshForGitHub || 0 !== $this->process->execute($command, $ignoredOutput, $cwd)) {
             $errorMsg = $this->process->getErrorOutput();
-            // private github repository without ssh key access, try https with auth
+            // private github repositories without ssh key access, try https with auth
             if (preg_match('{^git@' . self::getGitHubDomainsRegex($this->config) . ':(.+?)\.git$}i', $url, $match)
                 || preg_match('{^https?://' . self::getGitHubDomainsRegex($this->config) . '/(.*)}', $url, $match)
             ) {
@@ -248,7 +248,7 @@ class Git
 
     public function syncMirror($url, $dir)
     {
-        // update the repo if it is a valid git repository
+        // update the repo if it is a valid git repositories
         if (is_dir($dir) && 0 === $this->process->execute('git rev-parse --git-dir', $output, $dir) && trim($output) === '.') {
             try {
                 $commandCallable = function ($url) {

@@ -23,7 +23,7 @@ use Composer\Util\ProcessExecutor;
 use Composer\Util\Filesystem;
 
 /**
- * This repository allows installing local packages that are not necessarily under their own VCS.
+ * This repositories allows installing local packages that are not necessarily under their own VCS.
  *
  * The local packages will be symlinked when possible, else they will be copied.
  *
@@ -90,7 +90,7 @@ class PathRepository extends ArrayRepository implements ConfigurableRepositoryIn
     private $options;
 
     /**
-     * Initializes path repository.
+     * Initializes path repositories.
      *
      * @param array       $repoConfig
      * @param IOInterface $io
@@ -99,7 +99,7 @@ class PathRepository extends ArrayRepository implements ConfigurableRepositoryIn
     public function __construct(array $repoConfig, IOInterface $io, Config $config)
     {
         if (!isset($repoConfig['url'])) {
-            throw new \RuntimeException('You must specify the `url` configuration for the path repository');
+            throw new \RuntimeException('You must specify the `url` configuration for the path repositories');
         }
 
         $this->loader = new ArrayLoader(null, true);
@@ -122,7 +122,7 @@ class PathRepository extends ArrayRepository implements ConfigurableRepositoryIn
     }
 
     /**
-     * Initializes path repository.
+     * Initializes path repositories.
      *
      * This method will basically read the folder and add the found package.
      */
@@ -144,7 +144,7 @@ class PathRepository extends ArrayRepository implements ConfigurableRepositoryIn
                 }
             }
 
-            throw new \RuntimeException('The `url` supplied for the path (' . $this->url . ') repository does not exist');
+            throw new \RuntimeException('The `url` supplied for the path (' . $this->url . ') repositories does not exist');
         }
 
         foreach ($urlMatches as $url) {
@@ -164,7 +164,7 @@ class PathRepository extends ArrayRepository implements ConfigurableRepositoryIn
             );
             $package['transport-options'] = $this->options;
 
-            // carry over the root package version if this path repo is in the same git repository as root package
+            // carry over the root package version if this path repo is in the same git repositories as root package
             if (!isset($package['version']) && ($rootVersion = getenv('COMPOSER_ROOT_VERSION'))) {
                 if (
                     0 === $this->process->execute('git rev-parse HEAD', $ref1, $path)

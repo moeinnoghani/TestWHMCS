@@ -16,7 +16,7 @@ use Composer\Package\Loader\ArrayLoader;
 use Composer\Package\Loader\ValidatingArrayLoader;
 
 /**
- * Package repository.
+ * Package repositories.
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
  */
@@ -25,7 +25,7 @@ class PackageRepository extends ArrayRepository
     private $config;
 
     /**
-     * Initializes filesystem repository.
+     * Initializes filesystem repositories.
      *
      * @param array $config package definition
      */
@@ -41,7 +41,7 @@ class PackageRepository extends ArrayRepository
     }
 
     /**
-     * Initializes repository (reads file, or remote address).
+     * Initializes repositories (reads file, or remote address).
      */
     protected function initialize()
     {
@@ -52,7 +52,7 @@ class PackageRepository extends ArrayRepository
             try {
                 $package = $loader->load($package);
             } catch (\Exception $e) {
-                throw new InvalidRepositoryException('A repository of type "package" contains an invalid package definition: '.$e->getMessage()."\n\nInvalid package definition:\n".json_encode($package));
+                throw new InvalidRepositoryException('A repositories of type "package" contains an invalid package definition: '.$e->getMessage()."\n\nInvalid package definition:\n".json_encode($package));
             }
 
             $this->addPackage($package);

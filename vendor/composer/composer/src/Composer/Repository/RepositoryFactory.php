@@ -43,13 +43,13 @@ class RepositoryFactory
             } elseif ($allowFilesystem) {
                 $repoConfig = array('type' => 'filesystem', 'json' => $json);
             } else {
-                throw new \InvalidArgumentException("Invalid repository URL ($repository) given. This file does not contain a valid composer repository.");
+                throw new \InvalidArgumentException("Invalid repositories URL ($repository) given. This file does not contain a valid composer repositories.");
             }
         } elseif ('{' === substr($repository, 0, 1)) {
             // assume it is a json object that makes a repo config
             $repoConfig = JsonFile::parseJson($repository);
         } else {
-            throw new \InvalidArgumentException("Invalid repository url ($repository) given. Has to be a .json file, an http url or a JSON object.");
+            throw new \InvalidArgumentException("Invalid repositories url ($repository) given. Has to be a .json file, an http url or a JSON object.");
         }
 
         return $repoConfig;
@@ -145,7 +145,7 @@ class RepositoryFactory
 
         foreach ($repoConfigs as $index => $repo) {
             if (is_string($repo)) {
-                throw new \UnexpectedValueException('"repositories" should be an array of repository definitions, only a single repository was given');
+                throw new \UnexpectedValueException('"repositories" should be an array of repositories definitions, only a single repositories was given');
             }
             if (!is_array($repo)) {
                 throw new \UnexpectedValueException('Repository "'.$index.'" ('.json_encode($repo).') should be an array, '.gettype($repo).' given');

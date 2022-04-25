@@ -83,9 +83,9 @@ class RepositoryManager
     }
 
     /**
-     * Adds repository
+     * Adds repositories
      *
-     * @param RepositoryInterface $repository repository instance
+     * @param RepositoryInterface $repository repositories instance
      */
     public function addRepository(RepositoryInterface $repository)
     {
@@ -93,11 +93,11 @@ class RepositoryManager
     }
 
     /**
-     * Adds a repository to the beginning of the chain
+     * Adds a repositories to the beginning of the chain
      *
      * This is useful when injecting additional repositories that should trump Packagist, e.g. from a plugin.
      *
-     * @param RepositoryInterface $repository repository instance
+     * @param RepositoryInterface $repository repositories instance
      */
     public function prependRepository(RepositoryInterface $repository)
     {
@@ -105,12 +105,12 @@ class RepositoryManager
     }
 
     /**
-     * Returns a new repository for a specific installation type.
+     * Returns a new repositories for a specific installation type.
      *
-     * @param  string                    $type   repository type
-     * @param  array                     $config repository configuration
-     * @param  string                    $name   repository name
-     * @throws \InvalidArgumentException if repository for provided type is not registered
+     * @param  string                    $type   repositories type
+     * @param  array                     $config repositories configuration
+     * @param  string                    $name   repositories name
+     * @throws \InvalidArgumentException if repositories for provided type is not registered
      * @return RepositoryInterface
      */
     public function createRepository($type, $config, $name = null)
@@ -120,7 +120,7 @@ class RepositoryManager
         }
 
         if (isset($config['packagist']) && false === $config['packagist']) {
-            $this->io->writeError('<warning>Repository "'.$name.'" ('.json_encode($config).') has a packagist key which should be in its own repository definition</warning>');
+            $this->io->writeError('<warning>Repository "'.$name.'" ('.json_encode($config).') has a packagist key which should be in its own repositories definition</warning>');
         }
 
         $class = $this->repositoryClasses[$type];
@@ -135,7 +135,7 @@ class RepositoryManager
     }
 
     /**
-     * Stores repository class for a specific installation type.
+     * Stores repositories class for a specific installation type.
      *
      * @param string $type  installation type
      * @param string $class class name of the repo implementation
@@ -156,9 +156,9 @@ class RepositoryManager
     }
 
     /**
-     * Sets local repository for the project.
+     * Sets local repositories for the project.
      *
-     * @param WritableRepositoryInterface $repository repository instance
+     * @param WritableRepositoryInterface $repository repositories instance
      */
     public function setLocalRepository(WritableRepositoryInterface $repository)
     {
@@ -166,7 +166,7 @@ class RepositoryManager
     }
 
     /**
-     * Returns local repository for the project.
+     * Returns local repositories for the project.
      *
      * @return WritableRepositoryInterface
      */

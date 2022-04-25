@@ -315,7 +315,7 @@ class PlatformRepository extends ArrayRepository
     }
 
     /**
-     * Parses the version and adds a new package to the repository
+     * Parses the version and adds a new package to the repositories
      *
      * @param string      $name
      * @param null|string $prettyVersion

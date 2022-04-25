@@ -8,7 +8,7 @@ use League\Flysystem\Cached\Storage\AbstractCache;
 class Cache extends AbstractCache
 {
     /**
-     * The cache repository implementation.
+     * The cache repositories implementation.
      *
      * @var \Illuminate\Contracts\Cache\Repository
      */

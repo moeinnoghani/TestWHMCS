@@ -11,7 +11,7 @@ assertCli();
  * library/HTMLPurifier/ConfigSchema/schema.ser.
  *
  * This should be run when new configuration options are added to
- * HTML Purifier. A cached version is available via the repository
+ * HTML Purifier. A cached version is available via the repositories
  * so this does not normally have to be regenerated.
  *
  * If you have a directory containing custom configuration schema files,
