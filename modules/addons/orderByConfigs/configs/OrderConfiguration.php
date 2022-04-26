@@ -3,33 +3,86 @@
 class OrderConfiguration
 {
 
-    private static array $regions = ["iran-tabriz", "iran-mashhad", "iran-tehran", "us-washington"];
+    private static array $regions = [
+        [
+            'id' => 1, 'name' => 'iran'
+        ],
+        [
+            'id' => 2, 'name' => 'german'
+        ]
+    ];
 
-    private static array $operatingSystems = ["Debian", "Ubuntu", "WindowsServer", "CentOs"];
+    private static array $operatingSystems = [
+        [
+            'id' => 1, 'name' => 'ubuntu'
+        ],
 
-    private static array $HDDs = ["SSD", "NVME", "HDD"];
+        [
+            'id' => 2, 'name' => 'debian'
+        ],
 
-    public static function getRegions(): array
+        [
+            'id' => 3, 'name' => 'WindowsServer'
+        ]
+
+    ];
+
+    private static array $servicePlans = [
+        [
+            'id' => 1,
+            'name' => 'PlanA',
+            'price' => '35',
+            'region' => 'german',
+            'configs' => [
+                'disk' => [
+                    'type' => 'SSD',
+                    'space' => '2GB'
+                ],
+                'RAM' => '4GB',
+                'os' => 'ubuntu'
+            ]
+        ],
+
+        [
+            'id' => 2,
+            'name' => 'PlanB',
+            'price' => '15',
+            'region' => 'iran',
+            'configs' => [
+                'disk' => [
+                    'type' => 'NVMe',
+                    'space' => '3GB'
+                ],
+                'RAM' => '4GB',
+                'os' => 'WindowsServer'
+            ]
+        ]
+    ];
+
+    private static array $disks = [
+        [
+            'id' => 1, 'name' => 'SSD'
+        ],
+        ['id' => 2, 'name' => 'NVMe']
+    ];
+
+
+    public static function indexOperationSystems($region)
     {
-        return self::$regions;
+        return self::$operatingSystems;
+
     }
 
-    public static function getOS($region)
+
+    public static function indexServicePlans()
     {
-        switch ($region) {
-            case "iran-tabriz":
-                return ["Ubuntu", "WindowsServer"];
-            case "iran-mashhad":
-                return ["WindowsServer", "CentOs"];
-            case "iran-tehran":
-            case "us-washington":
-                return ["Debian", "Ubuntu", "WindowsServer", "CentOs"];
-        }
+        return self::$servicePlans;
+
     }
 
-    public static function getHDDs()
+    public static function indexDisks()
     {
-        return self::$HDDs;
+        return self::$disks;
     }
 
 
