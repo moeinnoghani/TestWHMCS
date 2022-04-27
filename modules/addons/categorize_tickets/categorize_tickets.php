@@ -15,7 +15,7 @@ function categorize_tickets_config()
         // Module author name
         'author' => 'Moein Noghani',
         // Default language
-        'language' => 'english',
+
         // Version number
         'version' => '1.1',
         'fields' => [
