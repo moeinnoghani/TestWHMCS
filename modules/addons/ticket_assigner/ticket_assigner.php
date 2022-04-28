@@ -1,6 +1,6 @@
 <?php
 
-include __DIR__.DIRECTORY_SEPARATOR.'/controllers/TicketAssigner.php';
+include __DIR__ . DIRECTORY_SEPARATOR . '/controllers/TicketAssigner.php';
 
 
 function ticket_assigner_config()
@@ -14,8 +14,29 @@ function ticket_assigner_config()
         'fields' => []
     ];
 
+    return $configs;
 }
 
-function ticket_assigner_output(){
-    $ticketAssigner =
+function ticket_assigner_output()
+{
+    $ticketAssigner = new TicketAssigner();
+
+    $updateTicketParams = [
+        'ticketid' => 9,
+        'flag' => 2
+    ];
+
+    $respone = localAPI('UpdateTicket', $updateTicketParams);
+
+    $temp = $ticketAssigner->getTicketsOfSupporter(6);
+
+    $temp2 = $ticketAssigner->getSupporterWithMinimumTickets();
+
+
+
+}
+
+function ticket_assigner_activate()
+{
+
 }
