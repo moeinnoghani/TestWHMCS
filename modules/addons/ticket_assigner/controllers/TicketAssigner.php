@@ -16,8 +16,10 @@ class TicketAssigner
         return Capsule::table('tbltickets')->where('flag', $supporterID)->get();
     }
 
-    public function handle()
+    public function handle($ticketID)
     {
+        $adminWithMinimumTickets = $this->getSupporterWithMinimumTickets();
+        $this->assignTicketToSupporter($ticketID, $adminWithMinimumTickets);
 
     }
 
@@ -34,19 +36,20 @@ class TicketAssigner
                 }
             });
             return [$supporter['id'] => $supporterTickets];
-        })->sortDesc()->toArray();
+        })->sort()->toArray();
 
 
         return key($supportersWithTicketNumbers);
     }
 
 
-    public function getAllSupporters()
+    public function getAllSupporters($deptID = null)
     {
+
         $response = localAPI('GetAdminUsers', []);
         $allAdmins = $response['admin_users'];
 
-        $supporters = collect($allAdmins)->filter(function ($admin) {
+        return collect($allAdmins)->filter(function ($admin) {
             $is_supporter = 0;
             collect($admin['supportDepartmentIds'])->each(function ($depts) use (&$is_supporter) {
 
@@ -59,8 +62,6 @@ class TicketAssigner
                 return $admin;
             }
         });
-
-        return $supporters;
     }
 
     public function assignTicketToSupporter($ticketID, $supporterID)
@@ -73,6 +74,31 @@ class TicketAssigner
 
         $respone = localAPI('UpdateTicket', $updateTicketParams);
 
+    }
+
+    public function getSupportersWithTickets()
+    {
+
+        $response = localAPI('GetAdminUsers', []);
+        $allAdmins = $response['admin_users'];
+        $tickets = localAPI('GetTickets', [])['tickets']['ticket'];
+
+        return collect($allAdmins)->mapWithKeys(function ($supporter) use ($tickets) {
+            $supporterTickets = 0;
+            collect($tickets)->each(function ($ticket) use ($supporter, &$supporterTickets) {
+                if ($supporter['id'] === $ticket['flag']) {
+                    $supporterTickets++;
+                }
+            });
+
+            return [
+                'id' => $supporter['id'],
+                'name' => $supporter['firstname'] . $supporter['lastname'],
+                'departments' => $supporter['supportDepartmentIds'],
+                'numberOfTickets' => $supporterTickets
+
+            ];
+        });
     }
 
 }
