@@ -17,14 +17,24 @@
         <th>Assigned Tickets</th>
     </tr>
     </thead>
+
+    <?php
+
+    foreach ($supportersDetails as $supporter) {
+        echo "
     <tr>
-    {foreach $supportersDetails as $supporter}
-        <td>$supporter['id']</td>
-        <td>$supporter['name']</td>
-                <td>$supporter['departments']</td>
-                        <td>$supporter['numberOfTickets']</td>
-    {/foreach}
-    </tr>
+        <td>{$supporter['id']}</td>
+        <td>{$supporter['name']}</td>
+<td>";
+        foreach ($supporter['departments'] as $depts) {
+            echo "<li style=list-style-type:none;>{$depts}</li>";
+        }
+        echo "</td>";
+
+        echo " <td>{$supporter['numberOfTickets']}</td>
+    </tr>";
+    }
+    ?>
 </table>
 </body>
 </html>

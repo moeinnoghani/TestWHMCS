@@ -16,30 +16,31 @@ class TicketAssigner
         return Capsule::table('tbltickets')->where('flag', $supporterID)->get();
     }
 
-    public function handle($ticketID)
+    public function assign($assignBy, $ticketID)
     {
-        $adminWithMinimumTickets = $this->getSupporterWithMinimumTickets();
-        $this->assignTicketToSupporter($ticketID, $adminWithMinimumTickets);
-
+        $supporterWithMinimumTicket = $this->getSupporterWithMinimumTickets($assignBy);
+        $this->assignTicketToSupporter($ticketID, $supporterWithMinimumTicket['id']);;
     }
 
-    public function getSupporterWithMinimumTickets()
+    public function getSupporterWithMinimumTickets($supporterStatus)
     {
-        $allSupporters = $this->getAllSupporters();
-        $tickets = localAPI('GetTickets', []);
+        $supportersWithTickets = $this->getSupportersWithTickets();
 
-        $supportersWithTicketNumbers = $allSupporters->mapWithKeys(function ($supporter) use ($tickets) {
-            $supporterTickets = 0;
-            collect($tickets['tickets']['ticket'])->each(function ($ticket) use ($supporter, &$supporterTickets) {
-                if ($supporter['id'] === $ticket['flag']) {
-                    $supporterTickets++;
+        if ($supporterStatus == 'offline') {
+            return collect($supportersWithTickets)->sortBy('numberOfTickets')->first();
+
+        } else if ($supporterStatus == 'online') {
+            $supportersWithTickets = $this->getSupportersWithTickets();
+            $onlineSupporters = localAPI('GetStaffOnline')['staffonline']['staff'];
+
+            $supportersSortedByNumberOfTickets = collect($supportersWithTickets)->sortBy('numberOfTickets');
+
+            foreach ($supportersSortedByNumberOfTickets as $supporter) {
+                if (collect($onlineSupporters)->contains('adminusername', $supporter['username'])) {
+                    return $supporter;
                 }
-            });
-            return [$supporter['id'] => $supporterTickets];
-        })->sort()->toArray();
-
-
-        return key($supportersWithTicketNumbers);
+            }
+        }
     }
 
 
@@ -83,8 +84,9 @@ class TicketAssigner
         $allAdmins = $response['admin_users'];
         $tickets = localAPI('GetTickets', [])['tickets']['ticket'];
 
-        return collect($allAdmins)->mapWithKeys(function ($supporter) use ($tickets) {
+        return collect($allAdmins)->map(function ($supporter) use ($tickets) {
             $supporterTickets = 0;
+
             collect($tickets)->each(function ($ticket) use ($supporter, &$supporterTickets) {
                 if ($supporter['id'] === $ticket['flag']) {
                     $supporterTickets++;
@@ -93,12 +95,13 @@ class TicketAssigner
 
             return [
                 'id' => $supporter['id'],
-                'name' => $supporter['firstname'] . $supporter['lastname'],
+                'name' => $supporter['firstname'] . " " . $supporter['lastname'],
                 'departments' => $supporter['supportDepartmentIds'],
+                'username' => $supporter['username'],
                 'numberOfTickets' => $supporterTickets
-
             ];
-        });
+        })->sortBy('id');
     }
+
 
 }
