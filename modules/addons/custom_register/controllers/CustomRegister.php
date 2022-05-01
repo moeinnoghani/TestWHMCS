@@ -13,7 +13,7 @@ class CustomRegister
     public function register()
     {
         print json_encode($this->registrationData);
-        die();
+
     }
 
 }

@@ -9,6 +9,6 @@ add_hook('ClientAreaRegister', 1, function ($vars) {
 add_hook('ClientAreaPageRegister', 1, function ($vars) {
 
     ob_clean();
-    header('Location: http://localhost:80/whmcs-8/index.php?m=custom_register');
+    header('Location: http://localhost:8080/whmcs-8/index.php?m=custom_register');
     exit();
 });

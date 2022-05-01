@@ -25,7 +25,8 @@ function custom_register_activate()
 function custom_register_clientarea($vars)
 {
 
-    if ($_POST['submit']){
+    if ($_POST['val']) {
+        file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . 'file.json', 'ok');
         $customRegister = new CustomRegister($_REQUEST);
         $customRegister->register();
     }
