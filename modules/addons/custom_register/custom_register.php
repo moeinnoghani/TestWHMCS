@@ -25,10 +25,13 @@ function custom_register_activate()
 function custom_register_clientarea($vars)
 {
 
-    if ($_POST['val']) {
-        file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . 'file.json', 'ok');
+    if ($_POST['request_type']=='submit') {
+        file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . 'file.json', json_encode($_REQUEST));
         $customRegister = new CustomRegister($_REQUEST);
         $customRegister->register();
+    }
+    if($_POST['request_type']=='verify'){
+        file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . 'file2.json', json_encode($_REQUEST));
     }
 
     return array(

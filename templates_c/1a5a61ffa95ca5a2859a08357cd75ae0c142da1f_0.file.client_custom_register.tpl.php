@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2022-05-02 01:18:18
+/* Smarty version 3.1.36, created on 2022-05-02 15:44:10
   from 'C:\xampp7.4\htdocs\whmcs-8\modules\addons\custom_register\views\client_custom_register.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_626f153ab6bce4_38289495',
+  'unifunc' => 'content_626fe02a80c484_54808100',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1a5a61ffa95ca5a2859a08357cd75ae0c142da1f' => 
     array (
       0 => 'C:\\xampp7.4\\htdocs\\whmcs-8\\modules\\addons\\custom_register\\views\\client_custom_register.tpl',
-      1 => 1651447095,
+      1 => 1651499048,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_626f153ab6bce4_38289495 (Smarty_Internal_Template $_smarty_tpl) {
+function content_626fe02a80c484_54808100 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
       integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -42,7 +42,7 @@ function content_626f153ab6bce4_38289495 (Smarty_Internal_Template $_smarty_tpl)
 
 <div class="container">
 
-    <form class="well form-horizontal" id="contact_form">
+    <form class="well form-horizontal" id="contact_form" method="post">
         <fieldset>
 
             <!-- Form Name -->
@@ -50,10 +50,6 @@ function content_626f153ab6bce4_38289495 (Smarty_Internal_Template $_smarty_tpl)
                 <center><h2><b>Registration Form</b></h2></center>
             </legend>
             <br>
-
-
-
-            <!-- Text input-->
 
             <br>
             <div class="form-group submit-form-params">
@@ -93,6 +89,15 @@ function content_626f153ab6bce4_38289495 (Smarty_Internal_Template $_smarty_tpl)
 
             <div id="div5">
 
+            </div>
+
+            <div id="div6" class='form-group verify-form-params'>
+                <label class='col-md-4 control-label'></label>
+                <div class='col-md-4 inputGroupContainer'>
+                    <div class='input-group'>
+                        <input type='button' class='btn btn-success' id='verify' value='Verify' style='background-color: #4CAF50; width: 160px;font-size: 15px;margin-left: 70px;margin-top: 30px'>
+                    </div>
+                </div>
             </div>
 
             <!-- Text input-->
@@ -153,7 +158,6 @@ function content_626f153ab6bce4_38289495 (Smarty_Internal_Template $_smarty_tpl)
             </div>
 
 
-
         </fieldset>
     </form>
 </div>
@@ -161,6 +165,14 @@ function content_626f153ab6bce4_38289495 (Smarty_Internal_Template $_smarty_tpl)
 
 <?php echo '<script'; ?>
 >
+    import button from "../vendor/twbs/bootstrap/js/src/button";
+
+    var div6;
+    $(document).ready(function () {
+        div6 = $('div[id="div6"]').detach();
+        $('div[id="div6"]').remove();
+    });
+
 
     $('#submitted-before-button').click(function () {
             $('.submit-form-params').remove();
@@ -180,13 +192,13 @@ function content_626f153ab6bce4_38289495 (Smarty_Internal_Template $_smarty_tpl)
                         "</div>";
                 });
 
-            $('#div8').after(function (){
+            $('#div8').after(function () {
                 return "<div class='form-group verify-form-params'>" +
 
                     "<label class='col-md-4 control-label'></label>" +
                     "<div class='col-md-4 inputGroupContainer'>" +
                     " <div class='input-group'>" +
-                    " <button style='width: 160px;font-size: 15px;margin-left: 70px;margin-top: 30px' type='button' class='btn btn-success ' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>" +
+                    " <button name='verify' style='width: 160px;font-size: 15px;margin-left: 70px;margin-top: 30px' type='button' class='btn btn-success ' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>" +
                     "Verify <span class='caret'></span>" +
                     "</button>" +
 
@@ -197,7 +209,7 @@ function content_626f153ab6bce4_38289495 (Smarty_Internal_Template $_smarty_tpl)
         }
     );
 
-    $('#submit').click(function appendText(event) {
+    $('button[id="submit"]').click(function (event) {
 
         event.preventDefault()
         $.ajax({
@@ -205,10 +217,16 @@ function content_626f153ab6bce4_38289495 (Smarty_Internal_Template $_smarty_tpl)
             cache: false,
             type: "POST",
             data: {
-                val: $("#submit").val(),
-
+                'firstname': $('input[name="first_name"]').val(),
+                'lastname': $('input[name="last_name"]').val(),
+                'password': $('input[name="user_password"]').val(),
+                'confirm_password': $('input[name="confirm_password"]').val(),
+                'email': $('input[name="email"]').val(),
+                'phone_number': $('input[id="phone_number"]').val(),
+                'request_type': 'submit'
             }
         });
+
 
         $('#submit').remove();
         $('.submit-form-params').remove();
@@ -221,142 +239,52 @@ function content_626f153ab6bce4_38289495 (Smarty_Internal_Template $_smarty_tpl)
                     "<div class='col-md-4 inputGroupContainer'>" +
                     " <div class='input-group'>" +
                     "  <span class='input-group-addon'><i class='glyphicon glyphicon-barcode'></i></span>" +
-                    " <input id='phone_number' name='verify_code' placeholder='Your Verify Code' class='form-control form-params'" +
+                    " <input id='verify_code' placeholder='Your Verify Code' class='form-control form-params'" +
                     " type='text'>" +
                     " </div>" +
                     "</div>" +
                     "</div>";
             }
         ).after(function () {
-            return "<div class='form-group verify-form-params'>" +
-
-                "<label class='col-md-4 control-label'></label>" +
-                "<div class='col-md-4 inputGroupContainer'>" +
-                " <div class='input-group'>" +
-                " <button style='width: 160px;font-size: 15px;margin-left: 70px;margin-top: 30px' type='button' class='btn btn-success ' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>" +
-                "Verify <span class='caret'></span>" +
-                "</button>" +
-
-                " </div>" +
-                "</div>" +
-                "</div>";
+            $('#div5').after(div6);
         });
 
-
-        // $('#lo').html("<form action=''>" +
-        //
-        //         " <input style='margin-bottom: 20px' type='text' name='verify_code'>" +
-        //             " <input style='margin-bottom: 20px' type='submit' value='verify' name='verify_code'>" +
-        //
-        //                 "</form>");
-        //
-        //
-        // });
     });
-    // $(document).ready(function()
-    //     {
-    //
-    //
-    //     $('#contact_form').bootstrapValidator({
-    //         // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
-    //         feedbackIcons: {
-    //             valid: 'glyphicon glyphicon-ok',
-    //             invalid: 'glyphicon glyphicon-remove',
-    //             validating: 'glyphicon glyphicon-refresh'
-    //         },
-    //         fields: {
-    //             first_name: {
-    //                 validators: {
-    //                     stringLength: {
-    //                         min: 2,
-    //                     },
-    //                     notEmpty: {
-    //                         message: 'Please enter your First Name'
-    //                     }
-    //                 }
-    //             },
-    //             last_name: {
-    //                 validators: {
-    //                     stringLength: {
-    //                         min: 2,
-    //                     },
-    //                     notEmpty: {
-    //                         message: 'Please enter your Last Name'
-    //                     }
-    //                 }
-    //             },
-    //             user_name: {
-    //                 validators: {
-    //                     stringLength: {
-    //                         min: 8,
-    //                     },
-    //                     notEmpty: {
-    //                         message: 'Please enter your Username'
-    //                     }
-    //                 }
-    //             },
-    //             user_password: {
-    //                 validators: {
-    //                     stringLength: {
-    //                         min: 8,
-    //                     },
-    //                     notEmpty: {
-    //                         message: 'Please enter your Password'
-    //                     }
-    //                 }
-    //             },
-    //             confirm_password: {
-    //                 validators: {
-    //                     stringLength: {
-    //                         min: 8,
-    //                     },
-    //                     notEmpty: {
-    //                         message: 'Please confirm your Password'
-    //                     }
-    //                 }
-    //             },
-    //             email: {
-    //                 validators: {
-    //                     notEmpty: {
-    //                         message: 'Please enter your Email Address'
-    //                     },
-    //                     emailAddress: {
-    //                         message: 'Please enter a valid Email Address'
-    //                     }
-    //                 }
-    //             },
-    //             phone_number: {
-    //                 validators: {
-    //                     stringLength: {
-    //
-    //                         notEmpty: {
-    //                             message: 'Please enter your Contact No.'
-    //                         }
-    //                     }
-    //                 },
-    //
-    //             }
+
+
+    $('button[id="verify"]').click(function (event) {
+            console.log("ok")
+            event.preventDefault()
+            $.ajax({
+                url: "addonmodules.php?m=custom_register",
+                cache: false,
+                type: "POST",
+                data: {
+                    // 'phone_number': $('input[id="phone_number"]').val(),
+                    'request_type': 'verify'
+                }
+            });
+        }
+    );
+
+
+    // $('#submit').change(function (event){
+    //     event.preventDefault()
+    //     $.ajax({
+    //         url: "addonmodules.php?m=custom_register",
+    //         cache: false,
+    //         type: "POST",
+    //         data: {
+    //             'firstname': $('input[name="first_name"]').val(),
+    //             'lastname': $('input[name="last_name"]').val(),
+    //             'password': $('input[name="user_password"]').val(),
+    //             'confirm_password': $('input[name="confirm_password"]').val(),
+    //             'email': $('input[name="email"]').val(),
+    //             'phone_number': $('input[id="phone_number"]').val(),
     //         }
-    //     })
-    // .on('success.form.bv', function(e) {
-    //
-    //     $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
-    //     $('#contact_form').data('bootstrapValidator').resetForm();
-    //
-    //     // Prevent form submission
-    //     e.preventDefault();
-    //
-    //     // Get the form instance
-    //     var $form = $(e.target);
-    //
-    //     // Get the BootstrapValidator instance
-    //     var bv = $form.data('bootstrapValidator');
-    //
-    //     // Use Ajax to submit form data
-    //     $.post($form.attr('#submit'), $form.serialize(), function(result) {
-    //         console.log(result);
-    //     }, 'json');
+    //     });
     // });
+
 
 <?php echo '</script'; ?>
 ><?php }
