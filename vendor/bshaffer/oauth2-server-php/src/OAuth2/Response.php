@@ -5,7 +5,7 @@ namespace OAuth2;
 use InvalidArgumentException;
 
 /**
- * Class to handle OAuth2 Responses in a graceful way.  Use this interface
+ * Class to handle OAuth2 Response in a graceful way.  Use this interface
  * to output the proper OAuth2 responses.
  *
  * @see OAuth2\ResponseInterface

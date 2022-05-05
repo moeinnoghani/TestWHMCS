@@ -1,7 +1,7 @@
 <?php
 
 
-include __DIR__ . "\controllers\TicketAssigner.php";
+//include __DIR__ . "\Controllers\TicketAssigner.php";
 
 
 add_hook('TicketOpen', 1, function ($vars) {
@@ -23,6 +23,6 @@ add_hook('AdminSupportTicketPagePreTickets', 1, function ($vars) {
 //    die();
     $supportersDetails = $ticketAssigner->getSupportersWithTickets();
 
-    return include __DIR__ . "\\views\AdminsTicketsStatus.php";
+    return include __DIR__ . "\\Views\AdminsTicketsStatus.php";
 
 });

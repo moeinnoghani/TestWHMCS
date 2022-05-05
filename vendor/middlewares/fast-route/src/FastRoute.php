@@ -25,7 +25,7 @@ class FastRoute implements MiddlewareInterface
     private $arguments = [];
 
     /**
-     * @var CallableResolverInterface Used to resolve the controllers
+     * @var CallableResolverInterface Used to resolve the Controllers
      */
     private $resolver;
 
@@ -40,7 +40,7 @@ class FastRoute implements MiddlewareInterface
     }
 
     /**
-     * Set the resolver used to create the controllers.
+     * Set the resolver used to create the Controllers.
      *
      * @param ContainerInterface $container
      *
@@ -97,7 +97,7 @@ class FastRoute implements MiddlewareInterface
     }
 
     /**
-     * Return the resolver used for the controllers
+     * Return the resolver used for the Controllers
      *
      * @return CallableResolverInterface
      */

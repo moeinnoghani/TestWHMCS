@@ -1,6 +1,6 @@
 <?php
 
-include __DIR__ . DIRECTORY_SEPARATOR . '/controllers/TicketAssigner.php';
+include __DIR__ . DIRECTORY_SEPARATOR . 'controllers/TicketAssigner.php';
 
 
 function ticket_assigner_config()
@@ -30,7 +30,7 @@ function ticket_assigner_output()
 
     $temp = $ticketAssigner->getTicketsOfSupporter(6);
 
-    $temp2 = $ticketAssigner->getSupporterWithMinimumTickets();
+//    $temp2 = $ticketAssigner->getSupporterWithMinimumTickets();
 
 
 

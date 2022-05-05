@@ -235,7 +235,7 @@ class SQLiteGrammar extends Grammar
     }
 
     /**
-     * Compile the SQL needed to drop all views.
+     * Compile the SQL needed to drop all Views.
      *
      * @return string
      */

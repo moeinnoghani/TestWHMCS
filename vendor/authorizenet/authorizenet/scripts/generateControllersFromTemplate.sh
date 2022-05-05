@@ -71,7 +71,7 @@ echo "Removing ExistingControllers From Request/Response List" | tee >> ${GENLOG
 echo From BlackList | tee >> ${GENLOG}
  blackList="ANetApi Error Ids XXDoNotUseDummy"
 for blackLine in $blackList ; do
-    echo Processing removal of Blacklisted controllers "$blackLine" | tee >> ${GENLOG}
+    echo Processing removal of Blacklisted Controllers "$blackLine" | tee >> ${GENLOG}
     perl -pi -w -e "s/^\b${blackLine}\b *$//g;" ${SRCLOG}3.log
 done
 perl -pi -w -e 's/^ *\n//g;' ${SRCLOG}3.log

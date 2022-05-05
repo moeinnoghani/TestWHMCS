@@ -501,10 +501,10 @@ class Response
     /**
      * Returns true if the response may safely be kept in a shared (surrogate) cache.
      *
-     * Responses marked "private" with an explicit Cache-Control directive are
+     * Response marked "private" with an explicit Cache-Control directive are
      * considered uncacheable.
      *
-     * Responses with neither a freshness lifetime (Expires, max-age) nor cache
+     * Response with neither a freshness lifetime (Expires, max-age) nor cache
      * validator (Last-Modified, ETag) are considered uncacheable because there is
      * no way to tell when or how to remove them from the cache.
      *

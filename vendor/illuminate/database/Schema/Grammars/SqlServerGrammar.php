@@ -353,7 +353,7 @@ class SqlServerGrammar extends Grammar
     }
 
     /**
-     * Compile the command to drop all views.
+     * Compile the command to drop all Views.
      *
      * @return string
      */
@@ -361,7 +361,7 @@ class SqlServerGrammar extends Grammar
     {
         return "DECLARE @sql NVARCHAR(MAX) = N'';
             SELECT @sql += 'DROP VIEW ' + QUOTENAME(OBJECT_SCHEMA_NAME(object_id)) + '.' + QUOTENAME(name) + ';'
-            FROM sys.views;
+            FROM sys.Views;
 
             EXEC sp_executesql @sql;";
     }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="input-group">
+    <span class="input-group-addon" style="background: #00afea"
+          id="basic-addon1">Verify Code Will Be Expire After</span>
+    <input type="text" id="expiration_time" style="width: 300px" class="form-control"
+           placeholder="Enter value in minute"
+           aria-describedby="basic-addon1">
+</div>
+<br><br><br>
+
+<div class="input-group">
+    <span class="input-group-addon" style="background: #7bc144"
+          id="basic-addon1">Number of Verify Code Tries Time</span>
+    <input type="text" id="tries_time" style="width: 300px" class="form-control" placeholder=""
+           aria-describedby="basic-addon1">
+</div>
+<br><br><br>
+
+<div class="input-group">
+    <span class="input-group-addon" style="background: #af5dd5" id="basic-addon1">Number of Verify Code Digits</span>
+    <input type="text" id="digits" style="width: 300px" class="form-control" placeholder=""
+           aria-describedby="basic-addon1">
+</div>
+<br><br><br><br>
+
+<button type="button" id="submit" class="btn btn-danger">submit</button>
+
+</body>
+</html>
+
+<script>
+
+
+    $('button[id="submit"]').click(function (event) {
+
+        event.preventDefault()
+        $.ajax({
+            url: "addonmodules.php?module=custom_register",
+            cache: false,
+            type: "POST",
+            data: {
+                'expiration_time': $('input[id="expiration_time"]').val(),
+                'digits': $('input[id="digits"]').val(),
+                'tries_time': $('input[id="tries_time"]').val(),
+                'submit': true
+            }
+        })
+    });
+</script>

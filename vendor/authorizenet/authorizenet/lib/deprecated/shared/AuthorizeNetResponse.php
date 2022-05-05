@@ -8,7 +8,7 @@
 trigger_error('AuthorizeNetResponse is deprecated, use request/response classes in net\authorize\api\contract\v1 instead. Refer examples in https://github.com/AuthorizeNet/sample-code-php .', E_USER_DEPRECATED);
 
 /**
- * Base class for the AuthorizeNet AIM & SIM Responses.
+ * Base class for the AuthorizeNet AIM & SIM Response.
  *
  * @package    AuthorizeNet
  * @subpackage    AuthorizeNetResponse

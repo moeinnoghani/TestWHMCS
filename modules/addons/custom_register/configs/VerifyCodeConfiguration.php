@@ -1,11 +1,21 @@
 <?php
 
-class PhoneValidationConfiguration
+class VerifyCodeConfiguration
 {
 
     private static int $VERIFY_CODE_WILL_EXPIRE_AFTER;
     private static int $VERIFY_CODE_TRIES_TIME;
+    private static int $VERIFY_CODE_DIGITS;
 
+    public static function setVerifyCodeDigits($numberOfDigits)
+    {
+        self::$VERIFY_CODE_DIGITS = $numberOfDigits;
+    }
+
+    public static function getVerifyCodeDigits()
+    {
+        return self::$VERIFY_CODE_DIGITS;
+    }
 
     public static function setVerifyCodeExpirationTime(int $expireAfter)
     {

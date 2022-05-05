@@ -39,7 +39,7 @@ class FreshCommand extends Command
 
         $this->call('db:wipe', array_filter([
             '--database' => $database,
-            '--drop-views' => $this->option('drop-views'),
+            '--drop-Views' => $this->option('drop-Views'),
             '--drop-types' => $this->option('drop-types'),
             '--force' => true,
         ]));
@@ -93,7 +93,7 @@ class FreshCommand extends Command
     {
         return [
             ['database', null, InputOption::VALUE_OPTIONAL, 'The database connection to use'],
-            ['drop-views', null, InputOption::VALUE_NONE, 'Drop all tables and views'],
+            ['drop-Views', null, InputOption::VALUE_NONE, 'Drop all tables and Views'],
             ['drop-types', null, InputOption::VALUE_NONE, 'Drop all tables and types (Postgres only)'],
             ['force', null, InputOption::VALUE_NONE, 'Force the operation to run when in production'],
             ['path', null, InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'The path(s) to the migrations files to be executed'],

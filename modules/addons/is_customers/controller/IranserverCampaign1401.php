@@ -54,7 +54,7 @@ class IranserverCampaign1401
 
     private function clientEmailValidation($email)
     {
-        if (!$email || !EmailValidator::is_valid($email)) {
+        if (!$email || !MailValidator::is_valid($email)) {
             echo json_encode([
                 'status' => 'failed',
                 'message' => 'Your Email is incorrect'

@@ -36,7 +36,7 @@ class ResponseHeaderBag extends HeaderBag
             $this->set('Cache-Control', '');
         }
 
-        /* RFC2616 - 14.18 says all Responses need to have a Date */
+        /* RFC2616 - 14.18 says all Response need to have a Date */
         if (!isset($this->headers['date'])) {
             $this->initDate();
         }

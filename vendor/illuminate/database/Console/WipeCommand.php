@@ -22,7 +22,7 @@ class WipeCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Drop all tables, views, and types';
+    protected $description = 'Drop all tables, Views, and types';
 
     /**
      * Execute the console command.
@@ -37,10 +37,10 @@ class WipeCommand extends Command
 
         $database = $this->input->getOption('database');
 
-        if ($this->option('drop-views')) {
+        if ($this->option('drop-Views')) {
             $this->dropAllViews($database);
 
-            $this->info('Dropped all views successfully.');
+            $this->info('Dropped all Views successfully.');
         }
 
         $this->dropAllTables($database);
@@ -70,7 +70,7 @@ class WipeCommand extends Command
     }
 
     /**
-     * Drop all of the database views.
+     * Drop all of the database Views.
      *
      * @param  string  $database
      * @return void
@@ -104,7 +104,7 @@ class WipeCommand extends Command
     {
         return [
             ['database', null, InputOption::VALUE_OPTIONAL, 'The database connection to use'],
-            ['drop-views', null, InputOption::VALUE_NONE, 'Drop all tables and views'],
+            ['drop-Views', null, InputOption::VALUE_NONE, 'Drop all tables and Views'],
             ['drop-types', null, InputOption::VALUE_NONE, 'Drop all tables and types (Postgres only)'],
             ['force', null, InputOption::VALUE_NONE, 'Force the operation to run when in production'],
         ];

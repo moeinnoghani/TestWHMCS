@@ -206,7 +206,7 @@ class Builder
     }
 
     /**
-     * Drop all views from the database.
+     * Drop all Views from the database.
      *
      * @return void
      *
@@ -214,7 +214,7 @@ class Builder
      */
     public function dropAllViews()
     {
-        throw new LogicException('This database driver does not support dropping all views.');
+        throw new LogicException('This database driver does not support dropping all Views.');
     }
 
     /**

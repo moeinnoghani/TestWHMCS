@@ -688,7 +688,7 @@ class Request
      * Gets a "parameter" value from any bag.
      *
      * This method is mainly useful for libraries that want to provide some flexibility. If you don't need the
-     * flexibility in controllers, it is better to explicitly get request parameters from the appropriate
+     * flexibility in Controllers, it is better to explicitly get request parameters from the appropriate
      * public property instead (attributes, query, request).
      *
      * Order of precedence: PATH (routing placeholders or custom attributes), GET, BODY

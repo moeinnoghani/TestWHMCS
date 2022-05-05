@@ -65,7 +65,7 @@ class MySqlBuilder extends Builder
     }
 
     /**
-     * Drop all views from the database.
+     * Drop all Views from the database.
      *
      * @return void
      */

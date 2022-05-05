@@ -32,7 +32,7 @@ function orderByConfigs_clientarea()
     }
 
     return array(
-        'templatefile' => 'views/orderByConfigs',
+        'templatefile' => 'Views/orderByConfigs',
         'requirelogin' => true, # accepts true/false
         'forcessl' => false, # accepts true/false
         'vars' => [

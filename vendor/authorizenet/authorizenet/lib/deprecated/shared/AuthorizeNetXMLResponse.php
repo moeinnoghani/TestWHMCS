@@ -4,14 +4,14 @@
 * @deprecated Use request/response classes in net\authorize\api\contract\v1 instead. Refer examples in https://github.com/AuthorizeNet/sample-code-php
 */
 /**
- * Base class for the AuthorizeNet ARB & CIM Responses.
+ * Base class for the AuthorizeNet ARB & CIM Response.
  *
  * @package    AuthorizeNet
  * @subpackage AuthorizeNetXML
  */
 
 /**
- * Base class for the AuthorizeNet ARB & CIM Responses.
+ * Base class for the AuthorizeNet ARB & CIM Response.
  *
  * @package    AuthorizeNet
  * @subpackage AuthorizeNetXML

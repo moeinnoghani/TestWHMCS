@@ -3,7 +3,7 @@
 namespace OAuth2;
 
 /**
- * Interface which represents an object response.  Meant to handle and display the proper OAuth2 Responses
+ * Interface which represents an object response.  Meant to handle and display the proper OAuth2 Response
  * for errors and successes
  *
  * @see \OAuth2\Response

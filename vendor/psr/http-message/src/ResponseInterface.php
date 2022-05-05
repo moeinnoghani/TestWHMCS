@@ -13,7 +13,7 @@ namespace Psr\Http\Message;
  * - Headers
  * - Message body
  *
- * Responses are considered immutable; all methods that might change state MUST
+ * Response are considered immutable; all methods that might change state MUST
  * be implemented such that they retain the internal state of the current
  * message and return an instance that contains the changed state.
  */

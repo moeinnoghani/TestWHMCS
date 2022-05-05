@@ -359,7 +359,7 @@ class CreateStatement extends Statement
     public $parameters;
 
     /**
-     * The body of this function or procedure. For views, it is the select
+     * The body of this function or procedure. For Views, it is the select
      * statement that gets the.
      *
      * Used by `CREATE FUNCTION`, `CREATE PROCEDURE` and `CREATE VIEW`.

@@ -195,7 +195,7 @@ class PrettyPageHandler extends Handler
             }
         }
 
-        $templateFile = $this->getResource("views/layout.html.php");
+        $templateFile = $this->getResource("Views/layout.html.php");
         $cssFile      = $this->getResource("css/whoops.base.css");
         $zeptoFile    = $this->getResource("js/zepto.min.js");
         $prettifyFile = $this->getResource("js/prettify.min.js");
@@ -226,17 +226,17 @@ class PrettyPageHandler extends Handler
             "javascript" => file_get_contents($jsFile),
 
             // Template paths:
-            "header"                     => $this->getResource("views/header.html.php"),
-            "header_outer"               => $this->getResource("views/header_outer.html.php"),
-            "frame_list"                 => $this->getResource("views/frame_list.html.php"),
-            "frames_description"         => $this->getResource("views/frames_description.html.php"),
-            "frames_container"           => $this->getResource("views/frames_container.html.php"),
-            "panel_details"              => $this->getResource("views/panel_details.html.php"),
-            "panel_details_outer"        => $this->getResource("views/panel_details_outer.html.php"),
-            "panel_left"                 => $this->getResource("views/panel_left.html.php"),
-            "panel_left_outer"           => $this->getResource("views/panel_left_outer.html.php"),
-            "frame_code"                 => $this->getResource("views/frame_code.html.php"),
-            "env_details"                => $this->getResource("views/env_details.html.php"),
+            "header"                     => $this->getResource("Views/header.html.php"),
+            "header_outer"               => $this->getResource("Views/header_outer.html.php"),
+            "frame_list"                 => $this->getResource("Views/frame_list.html.php"),
+            "frames_description"         => $this->getResource("Views/frames_description.html.php"),
+            "frames_container"           => $this->getResource("Views/frames_container.html.php"),
+            "panel_details"              => $this->getResource("Views/panel_details.html.php"),
+            "panel_details_outer"        => $this->getResource("Views/panel_details_outer.html.php"),
+            "panel_left"                 => $this->getResource("Views/panel_left.html.php"),
+            "panel_left_outer"           => $this->getResource("Views/panel_left_outer.html.php"),
+            "frame_code"                 => $this->getResource("Views/frame_code.html.php"),
+            "env_details"                => $this->getResource("Views/env_details.html.php"),
 
             "title"            => $this->getPageTitle(),
             "name"             => explode("\\", $inspector->getExceptionName()),

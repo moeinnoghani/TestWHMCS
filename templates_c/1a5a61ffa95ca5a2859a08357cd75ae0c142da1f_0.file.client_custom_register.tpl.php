@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2022-05-02 15:44:10
-  from 'C:\xampp7.4\htdocs\whmcs-8\modules\addons\custom_register\views\client_custom_register.tpl' */
+/* Smarty version 3.1.36, created on 2022-05-04 21:10:51
+  from 'C:\xampp7.4\htdocs\whmcs-8\modules\addons\custom_register\Views\client_custom_register.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_626fe02a80c484_54808100',
+  'unifunc' => 'content_6272cfbb60de08_38044482',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1a5a61ffa95ca5a2859a08357cd75ae0c142da1f' => 
     array (
-      0 => 'C:\\xampp7.4\\htdocs\\whmcs-8\\modules\\addons\\custom_register\\views\\client_custom_register.tpl',
-      1 => 1651499048,
+      0 => 'C:\\xampp7.4\\htdocs\\whmcs-8\\modules\\addons\\custom_register\\Views\\client_custom_register.tpl',
+      1 => 1651691405,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_626fe02a80c484_54808100 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6272cfbb60de08_38044482 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
       integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -39,6 +39,17 @@ function content_626fe02a80c484_54808100 (Smarty_Internal_Template $_smarty_tpl)
 <?php echo '<script'; ?>
  src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"><?php echo '</script'; ?>
 >
+
+<?php echo '<script'; ?>
+ src="//cdn.jsdelivr.net/npm/sweetalert2@11"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="sweetalert2.all.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="sweetalert2.min.js"><?php echo '</script'; ?>
+>
+<link rel="stylesheet" href="sweetalert2.min.css">
 
 <div class="container">
 
@@ -95,7 +106,8 @@ function content_626fe02a80c484_54808100 (Smarty_Internal_Template $_smarty_tpl)
                 <label class='col-md-4 control-label'></label>
                 <div class='col-md-4 inputGroupContainer'>
                     <div class='input-group'>
-                        <input type='button' class='btn btn-success' id='verify' value='Verify' style='background-color: #4CAF50; width: 160px;font-size: 15px;margin-left: 70px;margin-top: 30px'>
+                        <input type='button' class='btn btn-success' id='verify' value='Verify'
+                               style='background-color: #4CAF50; width: 160px;font-size: 15px;margin-left: 70px;margin-top: 30px'>
                     </div>
                 </div>
             </div>
@@ -165,10 +177,13 @@ function content_626fe02a80c484_54808100 (Smarty_Internal_Template $_smarty_tpl)
 
 <?php echo '<script'; ?>
 >
-    import button from "../vendor/twbs/bootstrap/js/src/button";
+    // import button from "../vendor/twbs/bootstrap/js/src/button";
+
 
     var div6;
+
     $(document).ready(function () {
+        console.log("ok")
         div6 = $('div[id="div6"]').detach();
         $('div[id="div6"]').remove();
     });
@@ -185,7 +200,7 @@ function content_626fe02a80c484_54808100 (Smarty_Internal_Template $_smarty_tpl)
                         "<div class='col-md-4 inputGroupContainer'>" +
                         " <div class='input-group'>" +
                         "  <span class='input-group-addon'><i class='glyphicon glyphicon-barcode'></i></span>" +
-                        " <input id='phone_number' placeholder='Your Verify Code' class='form-control form-params'" +
+                        " <input id='verify_code' placeholder='Your Verify Code' class='form-control form-params'" +
                         " type='text'>" +
                         " </div>" +
                         "</div>" +
@@ -193,18 +208,7 @@ function content_626fe02a80c484_54808100 (Smarty_Internal_Template $_smarty_tpl)
                 });
 
             $('#div8').after(function () {
-                return "<div class='form-group verify-form-params'>" +
-
-                    "<label class='col-md-4 control-label'></label>" +
-                    "<div class='col-md-4 inputGroupContainer'>" +
-                    " <div class='input-group'>" +
-                    " <button name='verify' style='width: 160px;font-size: 15px;margin-left: 70px;margin-top: 30px' type='button' class='btn btn-success ' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>" +
-                    "Verify <span class='caret'></span>" +
-                    "</button>" +
-
-                    " </div>" +
-                    "</div>" +
-                    "</div>";
+                return div6;
             });
         }
     );
@@ -225,12 +229,23 @@ function content_626fe02a80c484_54808100 (Smarty_Internal_Template $_smarty_tpl)
                 'phone_number': $('input[id="phone_number"]').val(),
                 'request_type': 'submit'
             }
+
+
+        }).done(function (data) {
+            if (JSON.parse(data).status === 'failed') {
+                Swal.fire({
+                    title: 'Error!',
+                    text: JSON.parse(data).description,
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                });
+            }
         });
 
 
         $('#submit').remove();
         $('.submit-form-params').remove();
-        $('.verify-form-params').remove();
+        $('.verify-form-params').hide();
         $('#submitted-before-button').remove();
 
         $('#div5').html(function () {
@@ -246,45 +261,47 @@ function content_626fe02a80c484_54808100 (Smarty_Internal_Template $_smarty_tpl)
                     "</div>";
             }
         ).after(function () {
-            $('#div5').after(div6);
+            return div6;
         });
+
 
     });
 
 
-    $('button[id="verify"]').click(function (event) {
-            console.log("ok")
-            event.preventDefault()
-            $.ajax({
-                url: "addonmodules.php?m=custom_register",
-                cache: false,
-                type: "POST",
-                data: {
-                    // 'phone_number': $('input[id="phone_number"]').val(),
-                    'request_type': 'verify'
-                }
-            });
+    $('input[id="verify"]').click(function (event) {
+
+            var element = $('input[id="phone_number"]');
+            var request_type;
+
+            (element.length > 0) ? request_type = 'verify' : request_type = 'submit_verify'
+
+            if (request_type === 'verify') {
+                event.preventDefault()
+                $.ajax({
+                    url: "addonmodules.php?m=custom_register",
+                    cache: false,
+                    type: "POST",
+                    data: {
+                        'phone_number': $('input[id="phone_number"]').val(),
+                        'verify_code': $('input[id="verify_code"]').val(),
+                        'request_type': 'verify'
+                    }
+                });
+            } else {
+                event.preventDefault()
+                $.ajax({
+                    url: "addonmodules.php?m=custom_register",
+                    cache: false,
+                    type: "POST",
+                    data: {
+                        'phone_number': $('input[id="phone_number"]').val(),
+                        'verify_code': $('input[id="verify_code"]').val(),
+                        'request_type': 'verify'
+                    }
+                });
+            }
         }
     );
-
-
-    // $('#submit').change(function (event){
-    //     event.preventDefault()
-    //     $.ajax({
-    //         url: "addonmodules.php?m=custom_register",
-    //         cache: false,
-    //         type: "POST",
-    //         data: {
-    //             'firstname': $('input[name="first_name"]').val(),
-    //             'lastname': $('input[name="last_name"]').val(),
-    //             'password': $('input[name="user_password"]').val(),
-    //             'confirm_password': $('input[name="confirm_password"]').val(),
-    //             'email': $('input[name="email"]').val(),
-    //             'phone_number': $('input[id="phone_number"]').val(),
-    //         }
-    //     });
-    // });
-
 
 <?php echo '</script'; ?>
 ><?php }

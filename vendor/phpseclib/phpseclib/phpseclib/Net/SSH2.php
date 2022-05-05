@@ -789,7 +789,7 @@ class SSH2
     var $last_interactive_response = '';
 
     /**
-     * Keyboard Interactive Request / Responses
+     * Keyboard Interactive Request / Response
      *
      * @see self::_keyboard_interactive_process()
      * @var array

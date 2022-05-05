@@ -22,7 +22,7 @@ use function sprintf;
 /**
  * HTTP response encapsulation.
  *
- * Responses are considered immutable; all methods that might change state are
+ * Response are considered immutable; all methods that might change state are
  * implemented such that they retain the internal state of the current
  * message and return a new instance that contains the changed state.
  */

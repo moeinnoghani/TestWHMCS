@@ -209,7 +209,7 @@ class PostgresGrammar extends Grammar
     }
 
     /**
-     * Compile the SQL needed to drop all views.
+     * Compile the SQL needed to drop all Views.
      *
      * @param  array  $views
      * @return string

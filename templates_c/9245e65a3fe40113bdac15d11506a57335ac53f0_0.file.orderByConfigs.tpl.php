@@ -1,6 +1,6 @@
 <?php
 /* Smarty version 3.1.36, created on 2022-04-25 13:06:46
-  from 'C:\xampp7.4\htdocs\whmcs-8\modules\addons\orderByConfigs\views\orderByConfigs.tpl' */
+  from 'C:\xampp7.4\htdocs\whmcs-8\modules\addons\orderByConfigs\Views\orderByConfigs.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
@@ -11,7 +11,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     '9245e65a3fe40113bdac15d11506a57335ac53f0' => 
     array (
-      0 => 'C:\\xampp7.4\\htdocs\\whmcs-8\\modules\\addons\\orderByConfigs\\views\\orderByConfigs.tpl',
+      0 => 'C:\\xampp7.4\\htdocs\\whmcs-8\\modules\\addons\\orderByConfigs\\Views\\orderByConfigs.tpl',
       1 => 1650884804,
       2 => 'file',
     ),

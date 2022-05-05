@@ -194,7 +194,7 @@ class ComposerStaticInitb3ce07b82b0ffc78844e171c9326c992
         ),
         'E' => 
         array (
-            'Egulias\\EmailValidator\\' => 23,
+            'Egulias\\MailValidator\\' => 23,
         ),
         'D' => 
         array (
@@ -596,7 +596,7 @@ class ComposerStaticInitb3ce07b82b0ffc78844e171c9326c992
         array (
             0 => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook',
         ),
-        'Egulias\\EmailValidator\\' => 
+        'Egulias\\MailValidator\\' =>
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
         ),
