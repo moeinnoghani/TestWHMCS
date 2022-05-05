@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2022-05-05 02:33:02
+/* Smarty version 3.1.36, created on 2022-05-05 06:37:08
   from 'C:\xampp7.4\htdocs\whmcs-8\modules\addons\custom_register\Views\client_custom_register.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_62731b3ed18cf0_37412389',
+  'unifunc' => 'content_62735474355c92_02065688',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a6808fd20eea73d504d5b9646a1c730d1e62e00b' => 
     array (
       0 => 'C:\\xampp7.4\\htdocs\\whmcs-8\\modules\\addons\\custom_register\\Views\\client_custom_register.tpl',
-      1 => 1651710769,
+      1 => 1651725036,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_62731b3ed18cf0_37412389 (Smarty_Internal_Template $_smarty_tpl) {
+function content_62735474355c92_02065688 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
       integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -246,6 +246,7 @@ function content_62731b3ed18cf0_37412389 (Smarty_Internal_Template $_smarty_tpl)
                     icon: 'success',
                     confirmButtonText: 'Ok'
                 });
+
 
                 $('#submit').remove();
                 $('.submit-form-params').remove();

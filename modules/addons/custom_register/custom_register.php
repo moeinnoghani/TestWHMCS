@@ -30,12 +30,10 @@ function custom_register_clientarea($vars)
     switch ($_POST['request_type']) {
         case 'submit':
         {
-            file_put_contents(__DIR__ . "/testConfigs.json",
-                VerifyCodeConfiguration::getVerifyCodeTriesTime() . VerifyCodeConfiguration::getVerifyCodeExpirationTime() . VerifyCodeConfiguration::getVerifyCodeDigits()
-            );
-//            VerifyCodeConfiguration::setVerifyCodeDigits(5);
-//            VerifyCodeConfiguration::setVerifyCodeExpirationTime(2);
-//            VerifyCodeConfiguration::setVerifyCodeTriesTime(3);
+
+            VerifyCodeConfiguration::setVerifyCodeDigits(5);
+            VerifyCodeConfiguration::setVerifyCodeExpirationTime(1);
+            VerifyCodeConfiguration::setVerifyCodeTriesTime(3);
 
             $submitController = new SubmitController($_REQUEST);
             $submitController->submit();
@@ -49,9 +47,9 @@ function custom_register_clientarea($vars)
         {
 
 
-//            VerifyCodeConfiguration::setVerifyCodeDigits(5);
-//            VerifyCodeConfiguration::setVerifyCodeExpirationTime(2);
-//            VerifyCodeConfiguration::setVerifyCodeTriesTime(3);
+            VerifyCodeConfiguration::setVerifyCodeDigits(5);
+            VerifyCodeConfiguration::setVerifyCodeExpirationTime(2);
+            VerifyCodeConfiguration::setVerifyCodeTriesTime(3);
 
             $verifyController = new VerifyController($_REQUEST);
             $verifyController->verify();

@@ -213,6 +213,7 @@
                     confirmButtonText: 'Ok'
                 });
 
+
                 $('#submit').remove();
                 $('.submit-form-params').remove();
                 $('.verify-form-params').hide();

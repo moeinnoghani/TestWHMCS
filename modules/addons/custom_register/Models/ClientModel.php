@@ -8,7 +8,7 @@ class ClientModel
 {
 
 
-    public function insertClientRegistrationData($registrationData)
+    public function insertClientRegistrationData($registrationData) //Move
     {
         Capsule::table('registration_data')->insert(
             [
@@ -19,45 +19,62 @@ class ClientModel
                 'password' => openssl_encrypt($registrationData['password'], "AES-256-CBC", 'secret'),
                 'verify_code' => $registrationData['verify_code'],
                 'tries_time' => 0,
+                'created_at' => \Illuminate\Support\Carbon::now('Asia/Tehran'),
                 'expired_at' => \Illuminate\Support\Carbon::now('Asia/Tehran')
                     ->addMinutes(VerifyCodeConfiguration::getVerifyCodeExpirationTime())
             ]
         );
     }
 
-    public function insertClientVerifyCode($clientEmail, $verifyCode)
+    public function insertClientVerifyCode($clientEmail, $verifyCode) //Move
     {
-        Capsule::table('registration_data')
+        $id = Capsule::table('registration_data')->orderByDesc('id')
             ->where('email', $clientEmail)
+            ->first('id')->id;
+
+        Capsule::table('registration_data')
+            ->where('id', $id)
             ->update([
                 'verify_code' => $verifyCode
             ]);
     }
 
-    public function getClientVerifyCode($clientPhoneNumber)
+    public function getClientVerifyCode($clientPhoneNumber) //Move
     {
-        return (Capsule::table('registration_data')
+        $id = Capsule::table('registration_data')->orderByDesc('id')
             ->where('phone_number', $clientPhoneNumber)
+            ->first('id')->id;
+
+        return (Capsule::table('registration_data')
+            ->where('id', $id)
             ->first('verify_code'))->verify_code;
     }
 
-    public function getClientRegistrationData($clientPhoneNumber)
+    public function getClientRegistrationData($clientPhoneNumber) //Move
     {
         return Capsule::table('registration_data')
             ->where('phone_number', $clientPhoneNumber)->first();
     }
 
-    public function getClientVerifyCodeExpirationTime($clientPhoneNumber)
+    public function getClientVerifyCodeExpirationTime($clientPhoneNumber) //Move
     {
-        return (Capsule::table('registration_data')
+        $id = Capsule::table('registration_data')->orderByDesc('id')
             ->where('phone_number', $clientPhoneNumber)
+            ->first('id')->id;
+
+        return (Capsule::table('registration_data')
+            ->where('id', $id)
             ->first('expired_at'))->expired_at;
     }
 
-    public function getClientVerifyTriesTime($clientPhoneNumber)
+    public function getClientVerifyTriesTime($clientPhoneNumber) //Move
     {
-        return (Capsule::table('registration_data')
+        $id = Capsule::table('registration_data')->orderByDesc('id')
             ->where('phone_number', $clientPhoneNumber)
+            ->first('id')->id;
+
+        return (Capsule::table('registration_data')
+            ->where('id', $id)
             ->first('tries_time'))->tries_time;
     }
 
@@ -79,23 +96,21 @@ class ClientModel
 
     }
 
-    public function increaseClientVerifyTriesTime($clientPhoneNumber, $increaseValue = null)
+    public function increaseClientVerifyTriesTime($clientPhoneNumber, $increaseValue = null)//Move
     {
         $triesTime = $this->getClientVerifyTriesTime($clientPhoneNumber);
-        if (isset($increaseValue)) {
 
-            Capsule::table('registration_data')
-                ->where('phone_number', $clientPhoneNumber)
-                ->update([
-                    'tries_time' => $triesTime + $increaseValue
-                ]);
-        }
+        $id = Capsule::table('registration_data')->orderByDesc('id')
+            ->where('phone_number', $clientPhoneNumber)
+            ->first('id')->id;
 
         Capsule::table('registration_data')
-            ->where('phone_number', $clientPhoneNumber)
+            ->where('id', $id)
             ->update([
-                'tries_time' => $triesTime + 1
+                'tries_time' => (isset($increaseValue)) ? $triesTime + $increaseValue : $triesTime + 1,
+                'updated_at' => \Illuminate\Support\Carbon::now('Asia/Tehran')
             ]);
+
     }
 
     public function addNewClient($clientPhoneNumber)
@@ -109,7 +124,7 @@ class ClientModel
             'country' => "IR",
             'phonenumber' => $clientRegistrationData->phone_number,
             'password2' => openssl_decrypt($clientRegistrationData->password, "AES-256-CBC", 'secret')
-    );
+        );
 
         $results = localAPI('AddClient', $postData);
         file_put_contents(__DIR__ . "/AddClientAPI_Report.json", json_encode($results));

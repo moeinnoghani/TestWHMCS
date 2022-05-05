@@ -58,14 +58,15 @@ class VerifyCodeValidator
     public function isVerifyCodeExpired(): bool
     {
         $verifyCodeExpirationTime = $this->clientModel->getClientVerifyCodeExpirationTime($this->phoneNumber);
-        $expired_at = \Carbon\Carbon::parse($verifyCodeExpirationTime);
-        $now = \Carbon\Carbon::now('Asia/Tehran');
 
-        if ($expired_at->lt($now)) {
+        $expired_at = \Illuminate\Support\Carbon::parse($verifyCodeExpirationTime);
+        $now = \Illuminate\Support\Carbon::now('Asia/Tehran')->toDateTimeString();
+
+        if ($expired_at->gt($now)) {
+            return false;
+        } else {
             $this->verifyCodeValidationResponse->addResponseDescription('your verify code is expired. please submit again');
             return true;
-        } else {
-            return false;
         }
 
     }
